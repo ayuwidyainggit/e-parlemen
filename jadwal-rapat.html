@@ -330,6 +330,18 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
 .mc-side{display:flex; align-items:flex-start; gap:6px; flex-shrink:0;}
 .mc-kebab{background:none; border:none; color:var(--muted); font-size:14px; cursor:pointer; padding:2px; font-family:inherit; line-height:1;}
 .mc-footer{display:flex; justify-content:space-between; align-items:center; margin-top:12px; padding-top:11px; border-top:1px dashed var(--border);}
+
+.mc-attendance{display:flex; align-items:center; gap:6px; margin-top:9px; font-size:11.3px; font-weight:800;}
+.mc-attendance .ic-svg{width:14px; height:14px; flex-shrink:0;}
+.mc-attendance.present{color:var(--success);}
+.mc-attendance.absent{color:var(--danger);}
+.mc-attendance .late-tag{font-size:9.3px; font-weight:700; color:var(--warn); background:var(--warn-bg); padding:2.5px 8px; border-radius:10px; margin-left:2px;}
+.mc-attendance .ontime-tag{font-size:9.3px; font-weight:700; color:var(--success); background:var(--success-bg); padding:2.5px 8px; border-radius:10px; margin-left:2px;}
+
+.mc-cancel-box{margin-top:9px; background:var(--danger-bg); border-radius:9px; padding:9px 11px;}
+.mc-cancel-box .cc-label{font-size:9.5px; font-weight:800; color:var(--danger); text-transform:uppercase; letter-spacing:.3px;}
+.mc-cancel-box .cc-reason{font-size:11px; color:#7a2323; margin-top:3px; line-height:1.45;}
+.mc-cancel-box .cc-meta{font-size:9.8px; color:#a35050; margin-top:5px;}
 .mc-detail-btn{display:inline-flex; align-items:center; gap:4px; padding:7px 13px; border-radius:9px; border:1.5px solid var(--green); color:var(--green); font-size:11px; font-weight:800; text-decoration:none;}
 
 .next-agenda-card{display:flex; align-items:center; gap:11px; background:#fff; border-radius:14px; padding:13px; border:1px solid var(--border); text-decoration:none; color:inherit;}
@@ -461,11 +473,135 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
     </div>
 
     <div id="jr-selesai" data-panel-group="jr" style="display:none;">
-      <div class="empty"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:34px;height:34px;"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5 5.5-6"/></svg></span>Belum ada rapat yang selesai.</div>
+      <div class="hint" style="margin-bottom:14px;">Riwayat rapat yang telah selesai, lengkap dengan status kehadiran Anda.</div>
+
+      <div class="meeting-card" style="border-left-color:var(--success);">
+        <div class="mc-header">
+          <div class="mc-time">
+            <div class="mc-time-ic" style="background:var(--success-bg); color:var(--success);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg></div>
+            <div class="mc-time-val">09.00</div>
+            <div class="mc-time-unit">WIB</div>
+          </div>
+          <div class="mc-body">
+            <div class="mc-title">Rapat Komisi III</div>
+            <div class="mc-desc">Evaluasi hasil kunjungan kerja infrastruktur desa</div>
+            <div class="mc-meta-row"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.3" r="2.4"/></svg> Ruang Rapat Komisi III</div>
+            <div class="mc-meta-row"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5"/><path d="M9 2h6"/></svg> 20 Mei 2025</div>
+            <div class="mc-attendance present"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5 5.5-6"/></svg> Hadir <span class="ontime-tag">Tepat Waktu</span></div>
+          </div>
+          <div class="mc-side">
+            <button type="button" class="mc-kebab" onclick="event.preventDefault(); event.stopPropagation();">&#8942;</button>
+          </div>
+        </div>
+        <div class="mc-footer">
+          <span class="badge badge-neutral">Komisi III</span>
+          <a class="mc-detail-btn" href="detail-undangan.html?status=selesai&amp;hadir=1&amp;telat=0">Detail <svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:11px;height:11px;"><path d="M9 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+
+      <div class="meeting-card" style="border-left-color:var(--success);">
+        <div class="mc-header">
+          <div class="mc-time">
+            <div class="mc-time-ic" style="background:var(--success-bg); color:var(--success);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg></div>
+            <div class="mc-time-val">13.00</div>
+            <div class="mc-time-unit">WIB</div>
+          </div>
+          <div class="mc-body">
+            <div class="mc-title">Rapat Badan Musyawarah</div>
+            <div class="mc-desc">Penyusunan jadwal persidangan masa sidang berikutnya</div>
+            <div class="mc-meta-row"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.3" r="2.4"/></svg> Ruang Bamus</div>
+            <div class="mc-meta-row"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5"/><path d="M9 2h6"/></svg> 21 Mei 2025</div>
+            <div class="mc-attendance present"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5 5.5-6"/></svg> Hadir <span class="late-tag">Terlambat 12 menit</span></div>
+          </div>
+          <div class="mc-side">
+            <button type="button" class="mc-kebab" onclick="event.preventDefault(); event.stopPropagation();">&#8942;</button>
+          </div>
+        </div>
+        <div class="mc-footer">
+          <span class="badge badge-neutral">Bamus</span>
+          <a class="mc-detail-btn" href="detail-undangan.html?status=selesai&amp;hadir=1&amp;telat=12">Detail <svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:11px;height:11px;"><path d="M9 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+
+      <div class="meeting-card" style="border-left-color:var(--danger);">
+        <div class="mc-header">
+          <div class="mc-time">
+            <div class="mc-time-ic" style="background:var(--danger-bg); color:var(--danger);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg></div>
+            <div class="mc-time-val">10.00</div>
+            <div class="mc-time-unit">WIB</div>
+          </div>
+          <div class="mc-body">
+            <div class="mc-title">Rapat Paripurna Pengesahan Perda</div>
+            <div class="mc-desc">Pengesahan Peraturan Daerah tentang Retribusi Daerah</div>
+            <div class="mc-meta-row"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.3" r="2.4"/></svg> Ruang Paripurna DPRD</div>
+            <div class="mc-meta-row"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5"/><path d="M9 2h6"/></svg> 22 Mei 2025</div>
+            <div class="mc-attendance absent"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6"/><path d="M9 9l6 6"/></svg> Tidak Hadir <span style="font-size:9.3px; font-weight:700; color:var(--muted); background:var(--neutral-bg); padding:2.5px 8px; border-radius:10px; margin-left:2px;">Izin Sakit</span></div>
+          </div>
+          <div class="mc-side">
+            <button type="button" class="mc-kebab" onclick="event.preventDefault(); event.stopPropagation();">&#8942;</button>
+          </div>
+        </div>
+        <div class="mc-footer">
+          <span class="badge badge-success">Paripurna</span>
+          <a class="mc-detail-btn" href="detail-undangan.html?status=selesai&amp;hadir=0&amp;alasan=Izin%20Sakit">Detail <svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:11px;height:11px;"><path d="M9 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+
     </div>
 
     <div id="jr-dibatalkan" data-panel-group="jr" style="display:none;">
-      <div class="empty"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:34px;height:34px;"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6"/><path d="M9 9l6 6"/></svg></span>Tidak ada rapat yang dibatalkan.</div>
+      <div class="hint" style="margin-bottom:14px;">Rapat yang dijadwalkan namun dibatalkan sebelum berlangsung.</div>
+
+      <div class="meeting-card" style="border-left-color:var(--muted);">
+        <div class="mc-header">
+          <div class="mc-time">
+            <div class="mc-time-ic" style="background:var(--neutral-bg); color:var(--neutral);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg></div>
+            <div class="mc-time-val">14.00</div>
+            <div class="mc-time-unit">WIB</div>
+          </div>
+          <div class="mc-body">
+            <div class="mc-title">Rapat Komisi IV</div>
+            <div class="mc-desc">Pembahasan Raperda Pengelolaan Sampah</div>
+            <div class="mc-meta-row"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.3" r="2.4"/></svg> Ruang Rapat Komisi IV</div>
+            <div class="mc-meta-row"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5"/><path d="M9 2h6"/></svg> Semula 21 Mei 2025</div>
+            <div class="mc-cancel-box">
+              <div class="cc-label">Alasan Pembatalan</div>
+              <div class="cc-reason">Kuorum tidak terpenuhi &ndash; jumlah anggota yang hadir kurang dari syarat minimal rapat.</div>
+              <div class="cc-meta">Dibatalkan oleh Sekretariat DPRD &middot; 21 Mei 2025, 08.00 WIB</div>
+            </div>
+          </div>
+          <div class="mc-side">
+            <span class="badge badge-danger">Dibatalkan</span>
+            <button type="button" class="mc-kebab" onclick="event.preventDefault(); event.stopPropagation();">&#8942;</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="meeting-card" style="border-left-color:var(--muted);">
+        <div class="mc-header">
+          <div class="mc-time">
+            <div class="mc-time-ic" style="background:var(--neutral-bg); color:var(--neutral);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg></div>
+            <div class="mc-time-val">09.00</div>
+            <div class="mc-time-unit">WIB</div>
+          </div>
+          <div class="mc-body">
+            <div class="mc-title">Rapat Fraksi Gabungan</div>
+            <div class="mc-desc">Konsolidasi sikap fraksi menjelang paripurna</div>
+            <div class="mc-meta-row"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.3" r="2.4"/></svg> Ruang Fraksi Gabungan</div>
+            <div class="mc-meta-row"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5"/><path d="M9 2h6"/></svg> Semula 23 Mei 2025</div>
+            <div class="mc-cancel-box">
+              <div class="cc-label">Alasan Pembatalan</div>
+              <div class="cc-reason">Bentrok dengan agenda koordinasi tingkat provinsi yang bersifat mendadak.</div>
+              <div class="cc-meta">Dibatalkan oleh Ketua Fraksi &middot; 22 Mei 2025, 16.00 WIB</div>
+            </div>
+          </div>
+          <div class="mc-side">
+            <span class="badge badge-danger">Dibatalkan</span>
+            <button type="button" class="mc-kebab" onclick="event.preventDefault(); event.stopPropagation();">&#8942;</button>
+          </div>
+        </div>
+      </div>
+
     </div>
 
   </div>
