@@ -23,6 +23,7 @@
   --danger-bg:#fbe7e7; --danger:#d64545;
   --info-bg:#e7f0fb; --info:#2f6fb0;
   --neutral-bg:#eef0ec; --neutral:#5b6a5e;
+  --purple-bg:#efe6fb; --purple:#7c4fd1;
 }
 *{box-sizing:border-box;}
 html,body{margin:0;padding:0;}
@@ -107,8 +108,54 @@ a{color:inherit;}
   background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.3); color:#fff; font-size:11.5px; font-weight:700;
   border-radius:9px; padding:8px 10px; text-decoration:none; display:inline-flex; gap:5px; align-items:center;
 }
+.hdr-icon-btn{
+  width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.16); flex-shrink:0;
+  display:flex; align-items:center; justify-content:center; color:#fff; text-decoration:none; border:none; cursor:pointer;
+}
+.hdr-icon-btn .ic-svg{width:16px; height:16px;}
 
-.screen{flex:1; padding:16px 16px 26px;}
+.screen{flex:1; padding:16px 16px 90px;}
+.screen-title{font-family:Georgia,'Times New Roman',serif; font-size:24px; font-weight:700; color:var(--ink); margin:2px 0 16px;}
+
+.search-row{display:flex; gap:8px; margin-bottom:14px;}
+.search-box{flex:1; display:flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--border); border-radius:24px; padding:10px 14px; min-width:0;}
+.search-box .ic-svg{width:15px; height:15px; color:var(--muted); flex-shrink:0;}
+.search-box input{border:none; outline:none; background:transparent; font-size:12px; font-family:inherit; color:var(--ink); width:100%; min-width:0;}
+.search-box input::placeholder{color:#a9b0a3;}
+.filter-wrap{position:relative; flex-shrink:0;}
+.filter-btn{display:flex; align-items:center; gap:5px; background:#fff; border:1px solid var(--border); border-radius:24px; padding:10px 12px; font-size:11.5px; font-weight:700; color:var(--ink); white-space:nowrap; font-family:inherit; cursor:pointer;}
+.filter-btn .ic-svg{width:14px; height:14px; color:var(--muted);}
+.filter-btn .chev-ic{transition:transform .15s ease;}
+.filter-btn.open .chev-ic{transform:rotate(180deg);}
+.filter-dropdown{display:none; position:absolute; top:calc(100% + 6px); right:0; background:#fff; border:1px solid var(--border); border-radius:12px; box-shadow:0 10px 24px rgba(0,0,0,.14); padding:6px; min-width:132px; z-index:30;}
+.filter-dropdown.open{display:block;}
+.filter-option{display:block; width:100%; text-align:left; padding:8px 10px; border-radius:8px; border:none; background:none; font-size:11px; font-weight:700; color:var(--ink); cursor:pointer; font-family:inherit;}
+.filter-option:hover{background:var(--neutral-bg);}
+.filter-option.active{color:var(--green); background:var(--success-bg);}
+
+.stats2-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:16px;}
+.stat2{background:#fff; border:1px solid var(--border); border-radius:14px; padding:12px 5px; text-align:center;}
+.stat2-ic{width:32px; height:32px; border-radius:10px; display:flex; align-items:center; justify-content:center; margin:0 auto 8px;}
+.stat2-ic .ic-svg{width:16px; height:16px;}
+.stat2-lbl{font-size:8.8px; font-weight:800; color:var(--ink); line-height:1.25; margin-bottom:4px;}
+.stat2-num{font-size:19px; font-weight:800; line-height:1; margin-bottom:4px;}
+.stat2-cap{font-size:8px; color:var(--muted); line-height:1.25;}
+
+.doc-item{display:grid; grid-template-columns:1fr 6fr 4fr 1fr; column-gap:5px; align-items:stretch; background:#fff; border-radius:14px; padding:11px; border:1px solid var(--border); margin-bottom:10px; text-decoration:none; color:inherit;}
+.doc-icon{grid-column:1; width:27px; height:27px; border-radius:8px; align-self:start; display:flex; align-items:center; justify-content:center; color:#fff;}
+.doc-icon .ic-svg{width:13px; height:13px;}
+.doc-body{grid-column:2; min-width:0;}
+.doc-title{font-weight:800; font-size:10.8px; color:var(--ink); margin-bottom:2px; line-height:1.3;}
+.doc-meta{font-size:8.2px; color:var(--muted); line-height:1.4;}
+.doc-tags{display:flex; gap:4px; margin-top:6px; flex-wrap:wrap;}
+.doc-tag{padding:2px 7px; border-radius:20px; font-size:7.5px; font-weight:700; white-space:nowrap;}
+.doc-waktu{grid-column:3; min-width:0; display:flex; flex-direction:column; align-items:flex-end; justify-content:space-between; gap:4px;}
+.doc-datetime{display:flex; flex-direction:column; align-items:flex-end;}
+.doc-date{font-size:8px; font-weight:800; color:var(--ink); white-space:nowrap;}
+.doc-time{font-size:7.3px; color:var(--muted); white-space:nowrap;}
+.doc-waktu .badge{font-size:7.3px; padding:2.5px 7px; white-space:nowrap; line-height:1.2;}
+.doc-kebab-col{grid-column:4; display:flex; align-items:flex-start; justify-content:flex-end;}
+.doc-kebab{background:none; border:none; color:var(--muted); font-size:13px; letter-spacing:1.2px; padding:0; cursor:pointer; font-family:inherit; line-height:1;}
 
 .card{background:var(--card); border-radius:14px; padding:14px; border:1px solid var(--border); box-shadow:0 1px 3px rgba(0,0,0,.05); margin-bottom:14px;}
 .card + .card{margin-top:0;}
@@ -116,7 +163,7 @@ a{color:inherit;}
 .section-title .more{font-size:11.5px; font-weight:700; color:var(--green); text-decoration:none;}
 h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
 .muted{color:var(--muted);}
-.hint{font-size:11.5px; color:var(--muted); line-height:1.5;}
+.hint{font-size:10px; color:var(--muted); line-height:1.5;}
 
 .stats-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:6px;}
 .stats-grid.cols-3{grid-template-columns:repeat(3,1fr);}
@@ -133,6 +180,7 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
 .badge-info{background:var(--info-bg); color:var(--info);}
 .badge-neutral{background:var(--neutral-bg); color:var(--neutral);}
 .badge-gold{background:#fbf1dc; color:#9a7b1f;}
+.badge-purple{background:var(--purple-bg); color:var(--purple);}
 
 .btn{display:flex; align-items:center; justify-content:center; gap:7px; padding:13px 16px; border-radius:11px; font-size:13.5px; font-weight:800; text-decoration:none; border:none; cursor:pointer; width:100%; font-family:inherit;}
 .btn-primary{background:linear-gradient(135deg,var(--green-dark),var(--green)); color:#fff; box-shadow:inset 0 0 0 1.5px var(--gold);}
@@ -261,7 +309,7 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
 
 .divider{height:1px; background:var(--border); margin:14px 0;}
 .fab{
-  position:fixed; bottom:120px; right:calc(50% - 175px); width:52px; height:52px; border-radius:50%;
+  position:absolute; bottom:92px; right:18px; width:52px; height:52px; border-radius:50%; z-index:15;
   background:linear-gradient(135deg,var(--green-dark),var(--green)); color:#fff; display:flex; align-items:center; justify-content:center;
   font-size:22px; text-decoration:none; box-shadow:0 8px 18px rgba(0,0,0,.3); border:2px solid var(--gold);
 }
@@ -295,10 +343,12 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
     </div>
 
   <div class="app-header">
-    <div class="hdr-watermark"><svg viewBox="0 0 140 170" class="hdr-watermark-svg" xmlns="http://www.w3.org/2000/svg"><rect x="58" y="70" width="24" height="95" fill="#fff"/><polygon points="46,70 70,26 94,70" fill="#fff"/><rect x="66" y="10" width="8" height="18" fill="#fff"/><circle cx="70" cy="6" r="3" fill="#fff"/><rect x="64" y="90" width="12" height="18" fill="#123424"/><rect x="18" y="140" width="104" height="16" fill="#fff"/><rect x="8" y="156" width="124" height="10" fill="#fff"/><rect x="30" y="120" width="10" height="20" fill="#fff"/><rect x="100" y="120" width="10" height="20" fill="#fff"/></svg></div><div class="header-row">  <div class="brand">    <div class="emblem" style="width:36px;height:36px;"><span style="display:inline-flex;width:24px;height:24px;"><svg viewBox="0 0 48 54" class="crest-svg" xmlns="http://www.w3.org/2000/svg"><path d="M24 2 L44 9 V24 C44 37 36 47 24 52 C12 47 4 37 4 24 V9 Z" fill="#0f2318" stroke="#e4c976" stroke-width="2"/><path d="M24 6 L40 11.5 V24 C40 34.5 33.5 42.5 24 47 C14.5 42.5 8 34.5 8 24 V11.5 Z" fill="none" stroke="#c9a24a" stroke-width="1"/><path d="M15 33 L19 18 L24 26 L29 18 L33 33 Z" fill="#c9a24a"/><path d="M17 33 H31 L29 39 H19 Z" fill="#d64545"/><path d="M14 20 C10 24 10 30 13 35" stroke="#e4c976" stroke-width="1.4" fill="none" stroke-linecap="round"/><path d="M34 20 C38 24 38 30 35 35" stroke="#e4c976" stroke-width="1.4" fill="none" stroke-linecap="round"/><text x="24" y="15" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#f3e6bb" font-weight="700">DPRD</text></svg></span></div>    <div class="brand-text"><h1 style="font-size:15px;">e-Parlemen</h1><div class="sub" style="font-size:9px;">DPRD KOTA MAGELANG</div></div>  </div>  <a href="notifikasi.html" class="bell" style="width:32px;height:32px;font-size:14px;"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="dot" style="width:14px;height:14px;font-size:8px;">3</span></a></div><div class="page-title-row">  <a class="back-btn" href="beranda.html"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 12H5"/><path d="M11 18l-6-6 6-6"/></svg></a>  <div class="page-title"><h2>Persuratan</h2><p>Surat masuk, keluar, dan disposisi</p></div>  <div class="header-actions"><a class="hdr-btn" href="surat-keluar-buat.html"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 5v14"/><path d="M5 12h14"/></svg> Buat Surat</a></div></div>
+    <div class="hdr-watermark"><svg viewBox="0 0 140 170" class="hdr-watermark-svg" xmlns="http://www.w3.org/2000/svg"><rect x="58" y="70" width="24" height="95" fill="#fff"/><polygon points="46,70 70,26 94,70" fill="#fff"/><rect x="66" y="10" width="8" height="18" fill="#fff"/><circle cx="70" cy="6" r="3" fill="#fff"/><rect x="64" y="90" width="12" height="18" fill="#123424"/><rect x="18" y="140" width="104" height="16" fill="#fff"/><rect x="8" y="156" width="124" height="10" fill="#fff"/><rect x="30" y="120" width="10" height="20" fill="#fff"/><rect x="100" y="120" width="10" height="20" fill="#fff"/></svg></div><div class="header-row" style="align-items:center;">  <a class="back-btn" href="beranda.html" style="margin-right:2px;"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 12H5"/><path d="M11 18l-6-6 6-6"/></svg></a>  <div class="brand">    <div class="emblem" style="width:36px;height:36px;"><span style="display:inline-flex;width:24px;height:24px;"><svg viewBox="0 0 48 54" class="crest-svg" xmlns="http://www.w3.org/2000/svg"><path d="M24 2 L44 9 V24 C44 37 36 47 24 52 C12 47 4 37 4 24 V9 Z" fill="#0f2318" stroke="#e4c976" stroke-width="2"/><path d="M24 6 L40 11.5 V24 C40 34.5 33.5 42.5 24 47 C14.5 42.5 8 34.5 8 24 V11.5 Z" fill="none" stroke="#c9a24a" stroke-width="1"/><path d="M15 33 L19 18 L24 26 L29 18 L33 33 Z" fill="#c9a24a"/><path d="M17 33 H31 L29 39 H19 Z" fill="#d64545"/><path d="M14 20 C10 24 10 30 13 35" stroke="#e4c976" stroke-width="1.4" fill="none" stroke-linecap="round"/><path d="M34 20 C38 24 38 30 35 35" stroke="#e4c976" stroke-width="1.4" fill="none" stroke-linecap="round"/><text x="24" y="15" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#f3e6bb" font-weight="700">DPRD</text></svg></span></div>    <div class="brand-text"><h1 style="font-size:15px;">e-Parlemen</h1><div class="sub" style="font-size:9px;">DPRD KOTA MAGELANG</div></div>  </div>  <div class="header-actions">    <a href="#" class="hdr-icon-btn" onclick="return false;" aria-label="Cari"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="10.5" cy="10.5" r="7"/><path d="M20 20l-5-5"/></svg></a>    <a href="#" class="hdr-icon-btn" onclick="return false;" aria-label="Filter"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 4h18l-7 8.5V19l-4 2v-8.5z"/></svg></a>  </div></div>
   </div>
   <div class="hdr-wave"><svg viewBox="0 0 400 30" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hdrWaveGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="var(--green-dark)"/><stop offset="60%" stop-color="var(--green)"/><stop offset="100%" stop-color="var(--green-mid)"/></linearGradient></defs><path d="M0,12 C90,32 130,-6 220,10 C290,22 330,4 400,14 L400,0 L0,0 Z" fill="url(#hdrWaveGrad)"/><path d="M0,12 C90,32 130,-6 220,10 C290,22 330,4 400,14 L400,30 L0,30 Z" fill="var(--cream)"/><path d="M0,12 C90,32 130,-6 220,10 C290,22 330,4 400,14" fill="none" stroke="#c0392b" stroke-width="2.2" opacity=".85"/></svg></div>
   <div class="screen">
+
+    <div class="screen-title">Persuratan</div>
 
     <div class="tabs">
       <button class="tab active" data-tabgroup="srt" onclick="showTab('srt','masuk',this)">Masuk</button>
@@ -307,102 +357,213 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
     </div>
 
     <div id="srt-masuk" data-panel-group="srt" style="display:block;">
-      <div class="stats-grid">
-        <div class="stat"><div class="stat-ic" style="background:var(--info-bg);color:var(--info);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg></div><div class="num">12</div><div class="lbl">Surat Masuk</div></div>
-        <div class="stat danger"><div class="stat-ic" style="background:var(--danger-bg);color:var(--danger);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v6"/><path d="M12 16h.01"/></svg></div><div class="num">5</div><div class="lbl">Perlu Tindak Lanjut</div></div>
-        <div class="stat warn"><div class="stat-ic" style="background:var(--warn-bg);color:var(--warn);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg></div><div class="num">3</div><div class="lbl">Dalam Proses</div></div>
-        <div class="stat success"><div class="stat-ic" style="background:var(--success-bg);color:var(--success);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5 5.5-6"/></svg></div><div class="num">8</div><div class="lbl">Selesai</div></div>
+      <div class="search-row">
+        <div class="search-box"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="10.5" cy="10.5" r="7"/><path d="M20 20l-5-5"/></svg><input type="text" placeholder="Cari surat masuk..."></div>
+        <div class="filter-wrap">
+          <button class="filter-btn" id="filterBtn" onclick="toggleFilterDropdown(event)"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/></svg> <span class="filter-label">Terbaru</span> <svg class="ic-svg chev-ic" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="filter-dropdown" id="filterDropdown">
+            <button type="button" class="filter-option active" onclick="selectFilter(this,'Terbaru')">Terbaru</button>
+            <button type="button" class="filter-option" onclick="selectFilter(this,'Terlama')">Terlama</button>
+            <button type="button" class="filter-option" onclick="selectFilter(this,'A-Z')">A-Z</button>
+            <button type="button" class="filter-option" onclick="selectFilter(this,'Z-A')">Z-A</button>
+          </div>
+        </div>
       </div>
-      <a class="list-item bl-danger" href="surat-masuk-detail.html">
-        <div class="icon-box" style="background:var(--danger-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg></div>
-        <div class="content">
-          <div class="title">Undangan Rapat Paripurna</div>
-          <div class="meta">005/UND/DPRD/V/2025 &middot; Sekretariat DPRD Kota Magelang</div>
-          <div class="meta">19 Mei 2025, 10.30 WIB</div>
+      <div class="stats2-grid">
+        <div class="stat2"><div class="stat2-ic" style="background:var(--success-bg);color:var(--success);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg></div><div class="stat2-lbl">Surat Masuk</div><div class="stat2-num" style="color:var(--success);">12</div><div class="stat2-cap">Surat belum dibaca</div></div>
+        <div class="stat2"><div class="stat2-ic" style="background:var(--danger-bg);color:var(--danger);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg></div><div class="stat2-lbl">Perlu Tindak Lanjut</div><div class="stat2-num" style="color:var(--danger);">5</div><div class="stat2-cap">Surat perlu diproses</div></div>
+        <div class="stat2"><div class="stat2-ic" style="background:var(--warn-bg);color:var(--warn);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg></div><div class="stat2-lbl">Dalam Proses</div><div class="stat2-num" style="color:var(--warn);">3</div><div class="stat2-cap">Surat sedang diproses</div></div>
+        <div class="stat2"><div class="stat2-ic" style="background:var(--success-bg);color:var(--success);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5 5.5-6"/></svg></div><div class="stat2-lbl">Selesai</div><div class="stat2-num" style="color:var(--success);">8</div><div class="stat2-cap">Surat selesai diproses</div></div>
+      </div>
+
+      <a class="doc-item" href="surat-masuk-detail.html">
+        <div class="doc-icon" style="background:var(--green);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg></div>
+        <div class="doc-body">
+          <div class="doc-title">Undangan Rapat Paripurna</div>
+          <div class="doc-meta">Nomor: 005/UND/DPRD/V/2025</div>
+          <div class="doc-meta">Dari: Sekretariat DPRD Kota Magelang</div>
+          <div class="doc-tags"><span class="doc-tag badge-success">Undangan</span><span class="doc-tag badge-neutral">Rapat Paripurna</span></div>
         </div>
-        <div class="side"><span class="badge badge-danger">Perlu Tindak Lanjut</span></div>
+        <div class="doc-waktu">
+          <div class="doc-datetime">
+            <div class="doc-date">19 Mei 2025</div>
+            <div class="doc-time">10.30 WIB</div>
+          </div>
+          <span class="badge badge-danger">Perlu Tindak Lanjut</span>
+        </div>
+        <div class="doc-kebab-col">
+          <button class="doc-kebab" type="button" onclick="event.preventDefault(); event.stopPropagation();">&#8942;</button>
+        </div>
       </a>
-      <a class="list-item bl-info" href="surat-masuk-detail.html">
-        <div class="icon-box" style="background:var(--info-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M9.5 13h5"/><path d="M9.5 16.5h5"/></svg></div>
-        <div class="content">
-          <div class="title">Nota Dinas Ketua DPRD</div>
-          <div class="meta">800/ND/DPRD/V/2025 &middot; Ketua DPRD Kota Magelang</div>
-          <div class="meta">18 Mei 2025, 15.45 WIB</div>
+
+      <a class="doc-item" href="surat-masuk-detail.html">
+        <div class="doc-icon" style="background:var(--info);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M9.5 13h5"/><path d="M9.5 16.5h5"/></svg></div>
+        <div class="doc-body">
+          <div class="doc-title">Nota Dinas Ketua DPRD</div>
+          <div class="doc-meta">Nomor: 800/ND/DPRD/V/2025</div>
+          <div class="doc-meta">Dari: Ketua DPRD Kota Magelang</div>
+          <div class="doc-tags"><span class="doc-tag badge-info">Nota Dinas</span><span class="doc-tag badge-neutral">Informasi</span></div>
         </div>
-        <div class="side"><span class="badge badge-warn">Dalam Proses</span></div>
+        <div class="doc-waktu">
+          <div class="doc-datetime">
+            <div class="doc-date">18 Mei 2025</div>
+            <div class="doc-time">15.45 WIB</div>
+          </div>
+          <span class="badge badge-warn">Dalam Proses</span>
+        </div>
+        <div class="doc-kebab-col">
+          <button class="doc-kebab" type="button" onclick="event.preventDefault(); event.stopPropagation();">&#8942;</button>
+        </div>
       </a>
-      <a class="list-item bl-success" href="surat-masuk-detail.html">
-        <div class="icon-box" style="background:var(--success-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="4" width="12" height="17" rx="1.5"/><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M9 11h6"/><path d="M9 15h6"/></svg></div>
-        <div class="content">
-          <div class="title">Laporan Hasil Kunjungan Dapil</div>
-          <div class="meta">120/KKD/DPRD/V/2025 &middot; Komisi III DPRD</div>
-          <div class="meta">17 Mei 2025, 09.20 WIB</div>
+
+      <a class="doc-item" href="surat-masuk-detail.html">
+        <div class="doc-icon" style="background:var(--gold);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="4" width="12" height="17" rx="1.5"/><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M9 11h6"/><path d="M9 15h6"/></svg></div>
+        <div class="doc-body">
+          <div class="doc-title">Laporan Hasil Kunjungan Dapil</div>
+          <div class="doc-meta">Nomor: 120/KKD/DPRD/V/2025</div>
+          <div class="doc-meta">Dari: Komisi III DPRD Kota Magelang</div>
+          <div class="doc-tags"><span class="doc-tag badge-gold">Laporan</span><span class="doc-tag badge-neutral">Kunjungan Dapil</span></div>
         </div>
-        <div class="side"><span class="badge badge-success">Selesai</span></div>
+        <div class="doc-waktu">
+          <div class="doc-datetime">
+            <div class="doc-date">17 Mei 2025</div>
+            <div class="doc-time">09.20 WIB</div>
+          </div>
+          <span class="badge badge-success">Selesai</span>
+        </div>
+        <div class="doc-kebab-col">
+          <button class="doc-kebab" type="button" onclick="event.preventDefault(); event.stopPropagation();">&#8942;</button>
+        </div>
       </a>
-      <a class="list-item bl-danger" href="surat-masuk-detail.html">
-        <div class="icon-box" style="background:var(--danger-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg></div>
-        <div class="content">
-          <div class="title">Permohonan Data</div>
-          <div class="meta">070/PD/DPRD/V/2025 &middot; Dinas PUPR Kota Magelang</div>
-          <div class="meta">16 Mei 2025, 14.10 WIB</div>
+
+      <a class="doc-item" href="surat-masuk-detail.html">
+        <div class="doc-icon" style="background:var(--purple);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M9.5 13h5"/><path d="M9.5 16.5h5"/></svg></div>
+        <div class="doc-body">
+          <div class="doc-title">Permohonan Data</div>
+          <div class="doc-meta">Nomor: 070/PD/DPRD/V/2025</div>
+          <div class="doc-meta">Dari: Dinas PUPR Kota Magelang</div>
+          <div class="doc-tags"><span class="doc-tag badge-purple">Permohonan</span><span class="doc-tag badge-neutral">Data</span></div>
         </div>
-        <div class="side"><span class="badge badge-danger">Perlu Tindak Lanjut</span></div>
+        <div class="doc-waktu">
+          <div class="doc-datetime">
+            <div class="doc-date">16 Mei 2025</div>
+            <div class="doc-time">14.10 WIB</div>
+          </div>
+          <span class="badge badge-danger">Perlu Tindak Lanjut</span>
+        </div>
+        <div class="doc-kebab-col">
+          <button class="doc-kebab" type="button" onclick="event.preventDefault(); event.stopPropagation();">&#8942;</button>
+        </div>
+      </a>
+
+      <a class="doc-item" href="surat-masuk-detail.html">
+        <div class="doc-icon" style="background:var(--danger);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg></div>
+        <div class="doc-body">
+          <div class="doc-title">Undangan Sosialisasi Peraturan Daerah</div>
+          <div class="doc-meta">Nomor: 005/UND/DPRD/V/2025</div>
+          <div class="doc-meta">Dari: Bappeda Kota Magelang</div>
+          <div class="doc-tags"><span class="doc-tag badge-danger">Undangan</span><span class="doc-tag badge-neutral">Sosialisasi Perda</span></div>
+        </div>
+        <div class="doc-waktu">
+          <div class="doc-datetime">
+            <div class="doc-date">15 Mei 2025</div>
+            <div class="doc-time">11.05 WIB</div>
+          </div>
+          <span class="badge badge-success">Selesai</span>
+        </div>
+        <div class="doc-kebab-col">
+          <button class="doc-kebab" type="button" onclick="event.preventDefault(); event.stopPropagation();">&#8942;</button>
+        </div>
       </a>
     </div>
 
     <div id="srt-keluar" data-panel-group="srt" style="display:none;">
       <div class="hint" style="margin-bottom:12px;">Permintaan pembuatan surat dikirim ke Admin Sekretariat untuk dibuatkan dalam bentuk PDF, lalu menunggu persetujuan Anda sebelum dicetak.</div>
-      <a class="list-item bl-warn" href="surat-keluar-detail.html">
-        <div class="icon-box" style="background:var(--warn-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M9.5 13h5"/><path d="M9.5 16.5h5"/></svg></div>
-        <div class="content">
-          <div class="title">Surat Keterangan Kunjungan Kerja</div>
-          <div class="meta">Diajukan ke Admin Sekretariat &middot; 23 Mei 2025</div>
+      <a class="doc-item" href="surat-keluar-detail.html">
+        <div class="doc-icon" style="background:var(--warn);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M9.5 13h5"/><path d="M9.5 16.5h5"/></svg></div>
+        <div class="doc-body">
+          <div class="doc-title">Surat Keterangan Kunjungan Kerja</div>
+          <div class="doc-meta">Diajukan ke Admin Sekretariat</div>
         </div>
-        <div class="side"><span class="badge badge-warn">Menunggu Persetujuan</span></div>
+        <div class="doc-waktu">
+          <div class="doc-datetime">
+            <div class="doc-date">23 Mei 2025</div>
+          </div>
+          <span class="badge badge-warn">Menunggu Persetujuan</span>
+        </div>
+        <div class="doc-kebab-col">
+          <button class="doc-kebab" type="button" onclick="event.preventDefault(); event.stopPropagation();">&#8942;</button>
+        </div>
       </a>
-      <a class="list-item bl-info" href="surat-keluar-detail.html">
-        <div class="icon-box" style="background:var(--info-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg></div>
-        <div class="content">
-          <div class="title">Surat Permohonan Data Anggaran</div>
-          <div class="meta">Diajukan ke Admin Sekretariat &middot; 21 Mei 2025</div>
+      <a class="doc-item" href="surat-keluar-detail.html">
+        <div class="doc-icon" style="background:var(--info);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg></div>
+        <div class="doc-body">
+          <div class="doc-title">Surat Permohonan Data Anggaran</div>
+          <div class="doc-meta">Diajukan ke Admin Sekretariat</div>
         </div>
-        <div class="side"><span class="badge badge-info">Diproses Admin</span></div>
+        <div class="doc-waktu">
+          <div class="doc-datetime">
+            <div class="doc-date">21 Mei 2025</div>
+          </div>
+          <span class="badge badge-info">Diproses Admin</span>
+        </div>
+        <div class="doc-kebab-col">
+          <button class="doc-kebab" type="button" onclick="event.preventDefault(); event.stopPropagation();">&#8942;</button>
+        </div>
       </a>
-      <a class="list-item bl-success" href="surat-keluar-detail.html">
-        <div class="icon-box" style="background:var(--success-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5 5.5-6"/></svg></div>
-        <div class="content">
-          <div class="title">Surat Undangan Rapat Dengar Pendapat</div>
-          <div class="meta">Disetujui &amp; dicetak Admin &middot; 15 Mei 2025</div>
+      <a class="doc-item" href="surat-keluar-detail.html">
+        <div class="doc-icon" style="background:var(--success);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5 5.5-6"/></svg></div>
+        <div class="doc-body">
+          <div class="doc-title">Surat Undangan Rapat Dengar Pendapat</div>
+          <div class="doc-meta">Disetujui &amp; dicetak Admin</div>
         </div>
-        <div class="side"><span class="badge badge-success">Selesai</span></div>
+        <div class="doc-waktu">
+          <div class="doc-datetime">
+            <div class="doc-date">15 Mei 2025</div>
+          </div>
+          <span class="badge badge-success">Selesai</span>
+        </div>
+        <div class="doc-kebab-col">
+          <button class="doc-kebab" type="button" onclick="event.preventDefault(); event.stopPropagation();">&#8942;</button>
+        </div>
       </a>
       <a class="btn btn-primary" href="surat-keluar-buat.html" style="margin-top:6px;"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 5v14"/><path d="M5 12h14"/></svg> Buat Permintaan Surat Keluar</a>
     </div>
 
     <div id="srt-disposisi" data-panel-group="srt" style="display:none;">
       <div class="hint" style="margin-bottom:12px;">Surat yang diteruskan (disposisi) kepada Anda maupun yang Anda teruskan kepada pihak lain.</div>
-      <a class="list-item bl-danger" href="disposisi.html">
-        <div class="icon-box" style="background:var(--danger-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h13l-3-3"/><path d="M20 17H7l3 3"/></svg></div>
-        <div class="content">
-          <div class="title">Permohonan Data &rarr; Anda</div>
-          <div class="meta">Dari: Sekretariat DPRD &middot; 070/PD/DPRD/V/2025</div>
-          <div class="meta">Catatan: Mohon ditindaklanjuti dan dikoordinasikan dengan Dinas PUPR.</div>
+      <a class="doc-item" href="disposisi.html">
+        <div class="doc-icon" style="background:var(--danger);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h13l-3-3"/><path d="M20 17H7l3 3"/></svg></div>
+        <div class="doc-body">
+          <div class="doc-title">Permohonan Data &rarr; Anda</div>
+          <div class="doc-meta">Dari: Sekretariat DPRD &middot; 070/PD/DPRD/V/2025</div>
+          <div class="doc-meta">Catatan: Mohon ditindaklanjuti dan dikoordinasikan dengan Dinas PUPR.</div>
         </div>
-        <div class="side"><span class="badge badge-danger">Perlu Tindak Lanjut</span></div>
+        <div class="doc-waktu">
+          <span class="badge badge-danger">Perlu Tindak Lanjut</span>
+        </div>
+        <div class="doc-kebab-col">
+          <button class="doc-kebab" type="button" onclick="event.preventDefault(); event.stopPropagation();">&#8942;</button>
+        </div>
       </a>
-      <a class="list-item bl-success" href="disposisi.html">
-        <div class="icon-box" style="background:var(--success-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h13l-3-3"/><path d="M20 17H7l3 3"/></svg></div>
-        <div class="content">
-          <div class="title">Undangan Rapat Paripurna &rarr; Sekretariat Fraksi</div>
-          <div class="meta">Diteruskan oleh Anda &middot; 19 Mei 2025</div>
+      <a class="doc-item" href="disposisi.html">
+        <div class="doc-icon" style="background:var(--success);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h13l-3-3"/><path d="M20 17H7l3 3"/></svg></div>
+        <div class="doc-body">
+          <div class="doc-title">Undangan Rapat Paripurna &rarr; Sekretariat Fraksi</div>
+          <div class="doc-meta">Diteruskan oleh Anda &middot; 19 Mei 2025</div>
         </div>
-        <div class="side"><span class="badge badge-success">Selesai</span></div>
+        <div class="doc-waktu">
+          <span class="badge badge-success">Selesai</span>
+        </div>
+        <div class="doc-kebab-col">
+          <button class="doc-kebab" type="button" onclick="event.preventDefault(); event.stopPropagation();">&#8942;</button>
+        </div>
       </a>
     </div>
 
   </div>
-<div class="bottomnav"><a class="navitem active" href="beranda.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></span>Beranda</a><a class="navitem" href="notifikasi.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span>Notifikasi</a><a class="navlogo" href="beranda.html" title="e-Parlemen"><span style="display:inline-flex;width:30px;height:30px;"><svg viewBox="0 0 48 54" class="crest-svg" xmlns="http://www.w3.org/2000/svg"><path d="M24 2 L44 9 V24 C44 37 36 47 24 52 C12 47 4 37 4 24 V9 Z" fill="#0f2318" stroke="#e4c976" stroke-width="2"/><path d="M24 6 L40 11.5 V24 C40 34.5 33.5 42.5 24 47 C14.5 42.5 8 34.5 8 24 V11.5 Z" fill="none" stroke="#c9a24a" stroke-width="1"/><path d="M15 33 L19 18 L24 26 L29 18 L33 33 Z" fill="#c9a24a"/><path d="M17 33 H31 L29 39 H19 Z" fill="#d64545"/><path d="M14 20 C10 24 10 30 13 35" stroke="#e4c976" stroke-width="1.4" fill="none" stroke-linecap="round"/><path d="M34 20 C38 24 38 30 35 35" stroke="#e4c976" stroke-width="1.4" fill="none" stroke-linecap="round"/><text x="24" y="15" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#f3e6bb" font-weight="700">DPRD</text></svg></span></a><a class="navitem" href="agenda-kegiatan.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><circle cx="8.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/></svg></span>Agenda</a><a class="navitem" href="profil.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 5-6 8-6s6.5 2 8 6"/></svg></span>Profil</a></div>
+  <a class="fab" href="surat-keluar-buat.html" aria-label="Buat Surat"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:22px;height:22px;stroke-width:2.5;"><path d="M12 5v14"/><path d="M5 12h14"/></svg></a>
+<div class="bottomnav"><a class="navitem active" href="beranda.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></span>Beranda</a><a class="navitem" href="notifikasi.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span>Notifikasi</a><a class="navitem" href="scan-qr.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="3" height="3" rx="0.6"/><rect x="18" y="14" width="3" height="3" rx="0.6"/><rect x="14" y="18" width="3" height="3" rx="0.6"/><rect x="18" y="18" width="3" height="3" rx="0.6"/></svg></span>Scan QR</a><a class="navitem" href="agenda-kegiatan.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><circle cx="8.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/></svg></span>Agenda</a><a class="navitem" href="profil.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 5-6 8-6s6.5 2 8 6"/></svg></span>Profil</a></div>
 </div>
 <div class="toast" id="toast"></div>
 <script>
@@ -421,6 +582,32 @@ function toast(msg){
   el.style.display = 'block';
   setTimeout(function(){ el.style.display = 'none'; }, 2200);
 }
+
+function toggleFilterDropdown(e){
+  e.preventDefault();
+  e.stopPropagation();
+  var dd = document.getElementById('filterDropdown');
+  var btn = document.getElementById('filterBtn');
+  if(!dd) return;
+  dd.classList.toggle('open');
+  if(btn){ btn.classList.toggle('open', dd.classList.contains('open')); }
+}
+function selectFilter(optBtn, label){
+  document.querySelectorAll('.filter-option').forEach(function(o){ o.classList.remove('active'); });
+  optBtn.classList.add('active');
+  var lbl = document.querySelector('.filter-label');
+  if(lbl){ lbl.textContent = label; }
+  var dd = document.getElementById('filterDropdown');
+  var btn = document.getElementById('filterBtn');
+  if(dd){ dd.classList.remove('open'); }
+  if(btn){ btn.classList.remove('open'); }
+}
+document.addEventListener('click', function(){
+  var dd = document.getElementById('filterDropdown');
+  var btn = document.getElementById('filterBtn');
+  if(dd){ dd.classList.remove('open'); }
+  if(btn){ btn.classList.remove('open'); }
+});
 
 
 </script>
