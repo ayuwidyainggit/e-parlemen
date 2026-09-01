@@ -157,6 +157,35 @@ a{color:inherit;}
 .doc-kebab-col{grid-column:4; display:flex; align-items:flex-start; justify-content:flex-end;}
 .doc-kebab{background:none; border:none; color:var(--muted); font-size:13px; letter-spacing:1.2px; padding:0; cursor:pointer; font-family:inherit; line-height:1;}
 
+.modal-backdrop{position:absolute; inset:0; background:rgba(15,35,24,.55); z-index:40; display:none; align-items:flex-end; justify-content:center;}
+.modal-backdrop.open{display:flex;}
+.modal-sheet{width:100%; max-height:86%; background:var(--cream); border-radius:22px 22px 0 0; overflow-y:auto; padding:16px 16px 22px; box-shadow:0 -10px 30px rgba(0,0,0,.3);}
+.modal-sheet-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;}
+.modal-sheet-head h3{font-family:Georgia,'Times New Roman',serif; font-size:18px; margin:0; color:var(--ink);}
+.modal-close{width:30px; height:30px; border-radius:50%; background:var(--neutral-bg); display:flex; align-items:center; justify-content:center; border:none; cursor:pointer; color:var(--ink); flex-shrink:0;}
+.modal-close .ic-svg{width:16px; height:16px;}
+
+.cc-search{display:flex; align-items:center; gap:7px; background:var(--neutral-bg); border-radius:9px; padding:8px 10px; margin-bottom:6px;}
+.cc-search .ic-svg{width:14px; height:14px; color:var(--muted); flex-shrink:0;}
+.cc-search input{border:none; outline:none; background:transparent; font-size:12px; font-family:inherit; color:var(--ink); width:100%; min-width:0;}
+.cc-search input::placeholder{color:#a4ac9f;}
+.cc-option-list{max-height:190px; overflow-y:auto;}
+.cc-option-empty{padding:12px 8px; text-align:center; font-size:11.5px; color:var(--muted);}
+.cc-option{display:flex; align-items:center; gap:9px; padding:9px 8px; border-radius:8px; font-size:12px; font-weight:600; color:var(--ink); cursor:pointer;}
+.cc-option:hover{background:var(--neutral-bg);}
+.cc-option.cc-hidden{display:none;}
+.cc-option.cc-disabled{opacity:.45; cursor:not-allowed; pointer-events:none;}
+.cc-option .cc-tag-done{margin-left:auto; font-size:8.6px; font-weight:800; color:var(--muted); background:var(--neutral-bg); padding:3px 7px; border-radius:10px; white-space:nowrap; flex-shrink:0;}
+.cc-option input{width:15px; height:15px; accent-color:var(--green); flex-shrink:0;}
+.cc-chip{display:inline-flex; align-items:center; gap:6px; padding:6px 8px 6px 12px; border-radius:20px; background:var(--success-bg); color:var(--success); font-size:11px; font-weight:700;}
+.cc-chip .x{cursor:pointer; font-weight:800; opacity:.65; width:16px; height:16px; border-radius:50%; display:flex; align-items:center; justify-content:center;}
+.cc-chip .x:hover{opacity:1; background:rgba(0,0,0,.08);}
+
+.riwayat-item{padding:11px 14px; border-bottom:1px solid var(--border);}
+.riwayat-item:last-child{border-bottom:none;}
+.riwayat-item .r-title{font-weight:800; font-size:11.5px; color:var(--ink);}
+.riwayat-item .r-meta{font-size:10px; color:var(--muted); margin-top:3px; line-height:1.5;}
+
 .card{background:var(--card); border-radius:14px; padding:14px; border:1px solid var(--border); box-shadow:0 1px 3px rgba(0,0,0,.05); margin-bottom:14px;}
 .card + .card{margin-top:0;}
 .section-title{font-size:14.5px; font-weight:800; color:var(--ink); margin:18px 0 10px; display:flex; justify-content:space-between; align-items:center;}
@@ -376,7 +405,7 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
         <div class="stat2"><div class="stat2-ic" style="background:var(--success-bg);color:var(--success);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5 5.5-6"/></svg></div><div class="stat2-lbl">Selesai</div><div class="stat2-num" style="color:var(--success);">8</div><div class="stat2-cap">Surat selesai diproses</div></div>
       </div>
 
-      <a class="doc-item" href="surat-masuk-detail.html">
+      <a class="doc-item" href="surat-masuk-detail.html?id=1">
         <div class="doc-icon" style="background:var(--green);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg></div>
         <div class="doc-body">
           <div class="doc-title">Undangan Rapat Paripurna</div>
@@ -396,7 +425,7 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
         </div>
       </a>
 
-      <a class="doc-item" href="surat-masuk-detail.html">
+      <a class="doc-item" href="surat-masuk-detail.html?id=2">
         <div class="doc-icon" style="background:var(--info);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M9.5 13h5"/><path d="M9.5 16.5h5"/></svg></div>
         <div class="doc-body">
           <div class="doc-title">Nota Dinas Ketua DPRD</div>
@@ -416,7 +445,7 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
         </div>
       </a>
 
-      <a class="doc-item" href="surat-masuk-detail.html">
+      <a class="doc-item" href="surat-masuk-detail.html?id=3">
         <div class="doc-icon" style="background:var(--gold);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="4" width="12" height="17" rx="1.5"/><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M9 11h6"/><path d="M9 15h6"/></svg></div>
         <div class="doc-body">
           <div class="doc-title">Laporan Hasil Kunjungan Dapil</div>
@@ -436,7 +465,7 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
         </div>
       </a>
 
-      <a class="doc-item" href="surat-masuk-detail.html">
+      <a class="doc-item" href="surat-masuk-detail.html?id=4">
         <div class="doc-icon" style="background:var(--purple);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M9.5 13h5"/><path d="M9.5 16.5h5"/></svg></div>
         <div class="doc-body">
           <div class="doc-title">Permohonan Data</div>
@@ -456,7 +485,7 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
         </div>
       </a>
 
-      <a class="doc-item" href="surat-masuk-detail.html">
+      <a class="doc-item" href="surat-masuk-detail.html?id=5">
         <div class="doc-icon" style="background:var(--danger);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg></div>
         <div class="doc-body">
           <div class="doc-title">Undangan Sosialisasi Peraturan Daerah</div>
@@ -479,7 +508,7 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
 
     <div id="srt-keluar" data-panel-group="srt" style="display:none;">
       <div class="hint" style="margin-bottom:12px;">Permintaan pembuatan surat dikirim ke Admin Sekretariat untuk dibuatkan dalam bentuk PDF, lalu menunggu persetujuan Anda sebelum dicetak.</div>
-      <a class="doc-item" href="surat-keluar-detail.html">
+      <a class="doc-item" href="surat-keluar-detail.html?id=1">
         <div class="doc-icon" style="background:var(--warn);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M9.5 13h5"/><path d="M9.5 16.5h5"/></svg></div>
         <div class="doc-body">
           <div class="doc-title">Surat Keterangan Kunjungan Kerja</div>
@@ -495,7 +524,7 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
           <button class="doc-kebab" type="button" onclick="event.preventDefault(); event.stopPropagation();">&#8942;</button>
         </div>
       </a>
-      <a class="doc-item" href="surat-keluar-detail.html">
+      <a class="doc-item" href="surat-keluar-detail.html?id=2">
         <div class="doc-icon" style="background:var(--info);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg></div>
         <div class="doc-body">
           <div class="doc-title">Surat Permohonan Data Anggaran</div>
@@ -511,7 +540,7 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
           <button class="doc-kebab" type="button" onclick="event.preventDefault(); event.stopPropagation();">&#8942;</button>
         </div>
       </a>
-      <a class="doc-item" href="surat-keluar-detail.html">
+      <a class="doc-item" href="surat-keluar-detail.html?id=3">
         <div class="doc-icon" style="background:var(--success);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5 5.5-6"/></svg></div>
         <div class="doc-body">
           <div class="doc-title">Surat Undangan Rapat Dengar Pendapat</div>
@@ -531,38 +560,151 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
     </div>
 
     <div id="srt-disposisi" data-panel-group="srt" style="display:none;">
-      <div class="hint" style="margin-bottom:12px;">Surat yang diteruskan (disposisi) kepada Anda maupun yang Anda teruskan kepada pihak lain.</div>
-      <a class="doc-item" href="disposisi.html">
-        <div class="doc-icon" style="background:var(--danger);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h13l-3-3"/><path d="M20 17H7l3 3"/></svg></div>
-        <div class="doc-body">
-          <div class="doc-title">Permohonan Data &rarr; Anda</div>
-          <div class="doc-meta">Dari: Sekretariat DPRD &middot; 070/PD/DPRD/V/2025</div>
-          <div class="doc-meta">Catatan: Mohon ditindaklanjuti dan dikoordinasikan dengan Dinas PUPR.</div>
-        </div>
-        <div class="doc-waktu">
-          <span class="badge badge-danger">Perlu Tindak Lanjut</span>
-        </div>
-        <div class="doc-kebab-col">
-          <button class="doc-kebab" type="button" onclick="event.preventDefault(); event.stopPropagation();">&#8942;</button>
-        </div>
-      </a>
-      <a class="doc-item" href="disposisi.html">
-        <div class="doc-icon" style="background:var(--success);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h13l-3-3"/><path d="M20 17H7l3 3"/></svg></div>
-        <div class="doc-body">
-          <div class="doc-title">Undangan Rapat Paripurna &rarr; Sekretariat Fraksi</div>
-          <div class="doc-meta">Diteruskan oleh Anda &middot; 19 Mei 2025</div>
-        </div>
-        <div class="doc-waktu">
-          <span class="badge badge-success">Selesai</span>
-        </div>
-        <div class="doc-kebab-col">
-          <button class="doc-kebab" type="button" onclick="event.preventDefault(); event.stopPropagation();">&#8942;</button>
-        </div>
-      </a>
+      <div class="hint" style="margin-bottom:12px;">Surat yang Anda disposisikan (teruskan) kepada pihak lain.</div>
+      <div id="disposisiList">
+        <a class="doc-item" href="disposisi.html?id=1">
+          <div class="doc-icon" style="background:var(--info);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h13l-3-3"/><path d="M20 17H7l3 3"/></svg></div>
+          <div class="doc-body">
+            <div class="doc-title">Laporan Hasil Kunjungan Dapil &rarr; Sekretariat Fraksi</div>
+            <div class="doc-meta">120/KKD/DPRD/V/2025 &middot; Sifat: Biasa</div>
+            <div class="doc-meta">Diteruskan oleh Anda &middot; 22 Mei 2025</div>
+          </div>
+          <div class="doc-waktu">
+            <span class="badge badge-info">Disposisi</span>
+          </div>
+          <div class="doc-kebab-col">
+            <button class="doc-kebab" type="button" onclick="event.preventDefault(); event.stopPropagation();">&#8942;</button>
+          </div>
+        </a>
+        <a class="doc-item" href="disposisi.html?id=2">
+          <div class="doc-icon" style="background:var(--warn);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h13l-3-3"/><path d="M20 17H7l3 3"/></svg></div>
+          <div class="doc-body">
+            <div class="doc-title">Permohonan Data &rarr; Tenaga Ahli Komisi I</div>
+            <div class="doc-meta">070/PD/DPRD/V/2025 &middot; Sifat: Segera</div>
+            <div class="doc-meta">Catatan: Mohon dikoordinasikan dengan Dinas PUPR.</div>
+          </div>
+          <div class="doc-waktu">
+            <span class="badge badge-warn">Di Proses</span>
+          </div>
+          <div class="doc-kebab-col">
+            <button class="doc-kebab" type="button" onclick="event.preventDefault(); event.stopPropagation();">&#8942;</button>
+          </div>
+        </a>
+        <a class="doc-item" href="disposisi.html?id=3">
+          <div class="doc-icon" style="background:var(--success);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h13l-3-3"/><path d="M20 17H7l3 3"/></svg></div>
+          <div class="doc-body">
+            <div class="doc-title">Undangan Rapat Paripurna &rarr; Sekretariat Fraksi</div>
+            <div class="doc-meta">Diteruskan oleh Anda &middot; 19 Mei 2025</div>
+          </div>
+          <div class="doc-waktu">
+            <span class="badge badge-success">Selesai</span>
+          </div>
+          <div class="doc-kebab-col">
+            <button class="doc-kebab" type="button" onclick="event.preventDefault(); event.stopPropagation();">&#8942;</button>
+          </div>
+        </a>
+      </div>
     </div>
 
   </div>
-  <a class="fab" href="surat-keluar-buat.html" aria-label="Buat Surat"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:22px;height:22px;stroke-width:2.5;"><path d="M12 5v14"/><path d="M5 12h14"/></svg></a>
+  <a class="fab" href="surat-keluar-buat.html" id="fabBtn" onclick="return handleFabClick(event);" aria-label="Buat Surat"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:22px;height:22px;stroke-width:2.5;"><path d="M12 5v14"/><path d="M5 12h14"/></svg></a>
+
+  <div class="modal-backdrop" id="disposisiModalBackdrop" onclick="if(event.target===this){ closeDisposisiModal(); }">
+    <div class="modal-sheet">
+      <div class="modal-sheet-head">
+        <h3>Buat Disposisi Baru</h3>
+        <button type="button" class="modal-close" onclick="closeDisposisiModal()"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 6l12 12"/><path d="M18 6L6 18"/></svg></button>
+      </div>
+
+      <div class="field">
+        <label>Nomor Surat</label>
+        <div class="filter-wrap" style="width:100%;">
+          <button type="button" class="filter-btn" id="dispNomorBtn" onclick="toggleDispNomorDropdown(event)" style="width:100%; justify-content:space-between; border-radius:10px; padding:11px 12px;">
+            <span id="dispNomorLabel" style="font-weight:600; color:var(--muted);">Pilih nomor surat...</span>
+            <svg class="ic-svg chev-ic" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="filter-dropdown" id="dispNomorDropdown" style="left:0; right:0; width:100%; padding:8px;">
+            <div class="cc-search">
+              <svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="10.5" cy="10.5" r="7"/><path d="M20 20l-5-5"/></svg>
+              <input type="text" id="dispNomorSearchInput" placeholder="Cari nomor / judul surat..." oninput="filterDispNomorOptions(this.value)" onclick="event.stopPropagation();">
+            </div>
+            <div class="cc-option-list" id="dispNomorOptionList">
+              <div class="cc-option" data-text="005/UND/DPRD/V/2025 &middot; Undangan Rapat Paripurna" onclick="selectDispNomor(this)">005/UND/DPRD/V/2025 &middot; Undangan Rapat Paripurna</div>
+              <div class="cc-option" data-text="800/ND/DPRD/V/2025 &middot; Nota Dinas Ketua DPRD" onclick="selectDispNomor(this)">800/ND/DPRD/V/2025 &middot; Nota Dinas Ketua DPRD</div>
+              <div class="cc-option" data-text="120/KKD/DPRD/V/2025 &middot; Laporan Hasil Kunjungan Dapil" onclick="selectDispNomor(this)">120/KKD/DPRD/V/2025 &middot; Laporan Hasil Kunjungan Dapil</div>
+              <div class="cc-option" data-text="070/PD/DPRD/V/2025 &middot; Permohonan Data" onclick="selectDispNomor(this)">070/PD/DPRD/V/2025 &middot; Permohonan Data</div>
+              <div class="cc-option" data-text="005/UND/DPRD/V/2025 &middot; Undangan Sosialisasi Peraturan Daerah" onclick="selectDispNomor(this)">005/UND/DPRD/V/2025 &middot; Undangan Sosialisasi Peraturan Daerah</div>
+            </div>
+            <div class="cc-option-empty" id="dispNomorEmpty" style="display:none;">Tidak ditemukan.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>CC <span class="opt">(bisa lebih dari satu)</span></label>
+        <div class="filter-wrap" style="width:100%;">
+          <button type="button" class="filter-btn" id="dispCcBtn" onclick="toggleDispCcDropdown(event)" style="width:100%; justify-content:space-between; border-radius:10px; padding:11px 12px;">
+            <span>Pilih dari daftar anggota / instansi</span>
+            <svg class="ic-svg chev-ic" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="filter-dropdown" id="dispCcDropdown" style="left:0; right:0; width:100%; padding:8px;">
+            <div class="cc-search">
+              <svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="10.5" cy="10.5" r="7"/><path d="M20 20l-5-5"/></svg>
+              <input type="text" id="dispCcSearchInput" placeholder="Cari nama anggota / instansi..." oninput="filterDispCcOptions(this.value)" onclick="event.stopPropagation();">
+            </div>
+            <div class="cc-option-list" id="dispCcOptionList">
+              <label class="cc-option"><input type="checkbox" data-name="Ketua DPRD Kota Magelang" onchange="toggleDispCcPerson(this)"> Ketua DPRD Kota Magelang</label>
+              <label class="cc-option"><input type="checkbox" data-name="Sekretariat DPRD Kota Magelang" onchange="toggleDispCcPerson(this)"> Sekretariat DPRD Kota Magelang</label>
+              <label class="cc-option"><input type="checkbox" data-name="Hj. Siti Nurhaliza, S.H." onchange="toggleDispCcPerson(this)"> Hj. Siti Nurhaliza, S.H.</label>
+              <label class="cc-option"><input type="checkbox" data-name="Drs. Ahmad Fauzi, M.Si." onchange="toggleDispCcPerson(this)"> Drs. Ahmad Fauzi, M.Si.</label>
+              <label class="cc-option"><input type="checkbox" data-name="Rina Kartika, S.E." onchange="toggleDispCcPerson(this)"> Rina Kartika, S.E.</label>
+              <label class="cc-option"><input type="checkbox" data-name="H. Slamet Riyadi" onchange="toggleDispCcPerson(this)"> H. Slamet Riyadi</label>
+              <label class="cc-option"><input type="checkbox" data-name="Sekretariat Fraksi" onchange="toggleDispCcPerson(this)"> Sekretariat Fraksi</label>
+              <label class="cc-option"><input type="checkbox" data-name="Arsip" onchange="toggleDispCcPerson(this)"> Arsip</label>
+            </div>
+            <div class="cc-option-empty" id="dispCcOptionEmpty" style="display:none;">Tidak ditemukan.</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:8px;">
+          <input type="text" id="dispCcManualInput" placeholder="Tambah nama / instansi lain...">
+          <button type="button" class="btn btn-outline btn-sm" onclick="addDispManualCc()">Tambah</button>
+        </div>
+        <div class="chip-row" id="dispCcChipList" style="margin-top:8px;">
+          <span class="hint" id="dispCcEmptyHint">Belum ada penerima CC dipilih.</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Sifat</label>
+        <select id="dispSifat">
+          <option>Biasa</option>
+          <option>Penting</option>
+          <option>Segera</option>
+          <option>Rahasia</option>
+        </select>
+      </div>
+
+      <div class="field" style="margin-bottom:18px;">
+        <label>Catatan Disposisi</label>
+        <textarea id="dispCatatan" placeholder="Contoh: Mohon ditindaklanjuti dan dikoordinasikan dengan pihak terkait."></textarea>
+      </div>
+
+      <div class="section-title" style="margin-top:0;">Riwayat Disposisi</div>
+      <div class="card" style="padding:0;">
+        <div class="riwayat-item">
+          <div class="r-title">Permohonan Data &rarr; Anda</div>
+          <div class="r-meta">Dari: Sekretariat DPRD &middot; 17 Mei 2025, 08.15 WIB</div>
+          <div class="r-meta">Catatan: Mohon ditindaklanjuti dan dikoordinasikan dengan Dinas PUPR.</div>
+        </div>
+        <div class="riwayat-item">
+          <div class="r-title">Undangan Rapat Paripurna &rarr; Sekretariat Fraksi</div>
+          <div class="r-meta">Diteruskan oleh Anda &middot; 19 Mei 2025</div>
+        </div>
+      </div>
+
+      <a class="btn btn-primary" href="#" onclick="submitDisposisi(); return false;" style="margin-top:16px;"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h13l-3-3"/><path d="M20 17H7l3 3"/></svg> Kirim Disposisi</a>
+    </div>
+  </div>
 <div class="bottomnav"><a class="navitem active" href="beranda.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></span>Beranda</a><a class="navitem" href="notifikasi.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span>Notifikasi</a><a class="navitem" href="scan-qr.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="3" height="3" rx="0.6"/><rect x="18" y="14" width="3" height="3" rx="0.6"/><rect x="14" y="18" width="3" height="3" rx="0.6"/><rect x="18" y="18" width="3" height="3" rx="0.6"/></svg></span>Scan QR</a><a class="navitem" href="agenda-kegiatan.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><circle cx="8.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/></svg></span>Agenda</a><a class="navitem" href="profil.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 5-6 8-6s6.5 2 8 6"/></svg></span>Profil</a></div>
 </div>
 <div class="toast" id="toast"></div>
@@ -607,8 +749,227 @@ document.addEventListener('click', function(){
   var btn = document.getElementById('filterBtn');
   if(dd){ dd.classList.remove('open'); }
   if(btn){ btn.classList.remove('open'); }
+  closeDispDropdowns();
 });
 
+function handleFabClick(e){
+  var disposisiPanel = document.getElementById('srt-disposisi');
+  if(disposisiPanel && disposisiPanel.style.display === 'block'){
+    e.preventDefault();
+    openDisposisiModal();
+    return false;
+  }
+  return true;
+}
+function openDisposisiModal(){
+  var bd = document.getElementById('disposisiModalBackdrop');
+  if(bd){ bd.classList.add('open'); }
+}
+function closeDisposisiModal(){
+  var bd = document.getElementById('disposisiModalBackdrop');
+  if(bd){ bd.classList.remove('open'); }
+  closeDispDropdowns();
+}
+function closeDispDropdowns(){
+  ['dispNomorDropdown','dispCcDropdown'].forEach(function(id){
+    var dd = document.getElementById(id);
+    if(dd){ dd.classList.remove('open'); }
+  });
+  ['dispNomorBtn','dispCcBtn'].forEach(function(id){
+    var btn = document.getElementById(id);
+    if(btn){ btn.classList.remove('open'); }
+  });
+}
+
+function toggleDispNomorDropdown(e){
+  e.preventDefault();
+  e.stopPropagation();
+  var dd = document.getElementById('dispNomorDropdown');
+  var btn = document.getElementById('dispNomorBtn');
+  if(!dd) return;
+  var ccDd = document.getElementById('dispCcDropdown');
+  var ccBtn = document.getElementById('dispCcBtn');
+  if(ccDd){ ccDd.classList.remove('open'); }
+  if(ccBtn){ ccBtn.classList.remove('open'); }
+  dd.classList.toggle('open');
+  var isOpen = dd.classList.contains('open');
+  if(btn){ btn.classList.toggle('open', isOpen); }
+  if(isOpen){
+    var search = document.getElementById('dispNomorSearchInput');
+    if(search){ search.value = ''; filterDispNomorOptions(''); setTimeout(function(){ search.focus(); }, 0); }
+  }
+}
+function filterDispNomorOptions(query){
+  var q = query.trim().toLowerCase();
+  var options = document.querySelectorAll('#dispNomorOptionList .cc-option');
+  var visibleCount = 0;
+  options.forEach(function(opt){
+    var text = opt.dataset.text.toLowerCase();
+    var match = text.indexOf(q) !== -1;
+    opt.classList.toggle('cc-hidden', !match);
+    if(match){ visibleCount++; }
+  });
+  var empty = document.getElementById('dispNomorEmpty');
+  if(empty){ empty.style.display = visibleCount === 0 ? 'block' : 'none'; }
+}
+function selectDispNomor(el){
+  if(el.classList.contains('cc-disabled')) return;
+  var label = document.getElementById('dispNomorLabel');
+  if(label){ label.textContent = el.dataset.text; label.style.color = 'var(--ink)'; label.style.fontWeight = '800'; }
+  var dd = document.getElementById('dispNomorDropdown');
+  var btn = document.getElementById('dispNomorBtn');
+  if(dd){ dd.classList.remove('open'); }
+  if(btn){ btn.classList.remove('open'); }
+}
+
+var disposedNomorTexts = [
+  '005/UND/DPRD/V/2025 · Undangan Rapat Paripurna',
+  '120/KKD/DPRD/V/2025 · Laporan Hasil Kunjungan Dapil',
+  '070/PD/DPRD/V/2025 · Permohonan Data'
+];
+function markDisposedOptions(){
+  document.querySelectorAll('#dispNomorOptionList .cc-option').forEach(function(opt){
+    var isDisposed = disposedNomorTexts.indexOf(opt.dataset.text) !== -1;
+    opt.classList.toggle('cc-disabled', isDisposed);
+    var existingTag = opt.querySelector('.cc-tag-done');
+    if(isDisposed && !existingTag){
+      var tag = document.createElement('span');
+      tag.className = 'cc-tag-done';
+      tag.textContent = 'Sudah Disposisi';
+      opt.appendChild(tag);
+    } else if(!isDisposed && existingTag){
+      existingTag.remove();
+    }
+  });
+}
+markDisposedOptions();
+
+function toggleDispCcDropdown(e){
+  e.preventDefault();
+  e.stopPropagation();
+  var dd = document.getElementById('dispCcDropdown');
+  var btn = document.getElementById('dispCcBtn');
+  if(!dd) return;
+  var nomorDd = document.getElementById('dispNomorDropdown');
+  var nomorBtn = document.getElementById('dispNomorBtn');
+  if(nomorDd){ nomorDd.classList.remove('open'); }
+  if(nomorBtn){ nomorBtn.classList.remove('open'); }
+  dd.classList.toggle('open');
+  var isOpen = dd.classList.contains('open');
+  if(btn){ btn.classList.toggle('open', isOpen); }
+  if(isOpen){
+    var search = document.getElementById('dispCcSearchInput');
+    if(search){ search.value = ''; filterDispCcOptions(''); setTimeout(function(){ search.focus(); }, 0); }
+  }
+}
+function filterDispCcOptions(query){
+  var q = query.trim().toLowerCase();
+  var options = document.querySelectorAll('#dispCcOptionList .cc-option');
+  var visibleCount = 0;
+  options.forEach(function(opt){
+    var name = opt.querySelector('input').dataset.name.toLowerCase();
+    var match = name.indexOf(q) !== -1;
+    opt.classList.toggle('cc-hidden', !match);
+    if(match){ visibleCount++; }
+  });
+  var empty = document.getElementById('dispCcOptionEmpty');
+  if(empty){ empty.style.display = visibleCount === 0 ? 'block' : 'none'; }
+}
+function dispCcSlug(name){
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+}
+function toggleDispCcPerson(checkbox){
+  var name = checkbox.dataset.name;
+  if(checkbox.checked){ addDispCcChip(name); }
+  else { removeDispCcChip(name); }
+}
+function addDispManualCc(){
+  var input = document.getElementById('dispCcManualInput');
+  var name = input.value.trim();
+  if(!name) return;
+  addDispCcChip(name);
+  input.value = '';
+}
+function addDispCcChip(name){
+  if(document.getElementById('disp-cc-chip-' + dispCcSlug(name))) return;
+  var hint = document.getElementById('dispCcEmptyHint');
+  if(hint){ hint.style.display = 'none'; }
+  var list = document.getElementById('dispCcChipList');
+  var chip = document.createElement('span');
+  chip.className = 'cc-chip';
+  chip.id = 'disp-cc-chip-' + dispCcSlug(name);
+  var label = document.createElement('span');
+  label.textContent = name;
+  var x = document.createElement('span');
+  x.className = 'x';
+  x.textContent = '×';
+  x.onclick = function(){ removeDispCcChip(name); };
+  chip.appendChild(label);
+  chip.appendChild(x);
+  list.appendChild(chip);
+}
+function removeDispCcChip(name){
+  var el = document.getElementById('disp-cc-chip-' + dispCcSlug(name));
+  if(el){ el.remove(); }
+  document.querySelectorAll('#dispCcDropdown input[type="checkbox"]').forEach(function(cb){
+    if(cb.dataset.name === name){ cb.checked = false; }
+  });
+  var list = document.getElementById('dispCcChipList');
+  var hint = document.getElementById('dispCcEmptyHint');
+  if(list && hint && list.querySelectorAll('.cc-chip').length === 0){
+    hint.style.display = 'inline';
+  }
+}
+
+function submitDisposisi(){
+  var nomorLabel = document.getElementById('dispNomorLabel');
+  if(!nomorLabel || nomorLabel.style.fontWeight !== '800'){
+    toast('Pilih nomor surat terlebih dahulu');
+    return;
+  }
+  var nomorText = nomorLabel.textContent;
+  var judul = nomorText.split('·')[1] ? nomorText.split('·')[1].trim() : nomorText;
+  var catatan = document.getElementById('dispCatatan').value.trim();
+  var sifat = document.getElementById('dispSifat').value;
+  var ccChips = document.querySelectorAll('#dispCcChipList .cc-chip');
+  var ccNames = Array.prototype.map.call(ccChips, function(c){ return c.firstChild.textContent; });
+
+  var list = document.getElementById('disposisiList');
+  if(list){
+    var item = document.createElement('a');
+    item.className = 'doc-item';
+    item.href = 'disposisi.html';
+    var metaCatatan = catatan ? '<div class="doc-meta">Catatan: ' + catatan + '</div>' : '';
+    var metaCc = ccNames.length ? '<div class="doc-meta">CC: ' + ccNames.join(', ') + '</div>' : '';
+    item.innerHTML = ''
+      + '<div class="doc-icon" style="background:var(--info);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h13l-3-3"/><path d="M20 17H7l3 3"/></svg></div>'
+      + '<div class="doc-body">'
+      +   '<div class="doc-title">' + judul + ' &rarr; Ditindaklanjuti</div>'
+      +   '<div class="doc-meta">' + nomorText + ' &middot; Sifat: ' + sifat + '</div>'
+      +   metaCatatan
+      +   metaCc
+      + '</div>'
+      + '<div class="doc-waktu"><span class="badge badge-info">Disposisi</span></div>'
+      + '<div class="doc-kebab-col"><button class="doc-kebab" type="button" onclick="event.preventDefault(); event.stopPropagation();">&#8942;</button></div>';
+    list.insertBefore(item, list.firstChild);
+  }
+
+  if(disposedNomorTexts.indexOf(nomorText) === -1){
+    disposedNomorTexts.push(nomorText);
+  }
+  markDisposedOptions();
+
+  toast('Disposisi berhasil dikirim');
+  closeDisposisiModal();
+
+  nomorLabel.textContent = 'Pilih nomor surat...';
+  nomorLabel.style.color = 'var(--muted)';
+  nomorLabel.style.fontWeight = '600';
+  document.getElementById('dispCatatan').value = '';
+  document.getElementById('dispSifat').selectedIndex = 0;
+  document.getElementById('dispCcChipList').innerHTML = '<span class="hint" id="dispCcEmptyHint">Belum ada penerima CC dipilih.</span>';
+  document.querySelectorAll('#dispCcDropdown input[type="checkbox"]').forEach(function(cb){ cb.checked = false; });
+}
 
 </script>
 </body>

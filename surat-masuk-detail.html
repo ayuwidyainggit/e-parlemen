@@ -109,6 +109,7 @@ a{color:inherit;}
 }
 
 .screen{flex:1; padding:16px 16px 26px;}
+.screen-title{font-family:Georgia,'Times New Roman',serif; font-size:24px; font-weight:700; color:var(--ink); margin:2px 0 16px;}
 
 .card{background:var(--card); border-radius:14px; padding:14px; border:1px solid var(--border); box-shadow:0 1px 3px rgba(0,0,0,.05); margin-bottom:14px;}
 .card + .card{margin-top:0;}
@@ -181,6 +182,7 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
 .t-item:last-child{margin-bottom:0;}
 .t-item::before{content:""; position:absolute; left:-20px; top:2px; width:11px; height:11px; border-radius:50%; background:var(--green); border:3px solid #fff; box-shadow:0 0 0 1px var(--border);}
 .t-item.done::before{background:var(--success);}
+.t-item.active::before{background:var(--warn);}
 .t-item.pending::before{background:#d8d4c6;}
 .t-item .t-title{font-weight:800; font-size:12.6px;}
 .t-item .t-time{font-size:10.5px; color:var(--muted); margin-top:1px;}
@@ -295,50 +297,51 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
     </div>
 
   <div class="app-header">
-    <div class="hdr-watermark"><svg viewBox="0 0 140 170" class="hdr-watermark-svg" xmlns="http://www.w3.org/2000/svg"><rect x="58" y="70" width="24" height="95" fill="#fff"/><polygon points="46,70 70,26 94,70" fill="#fff"/><rect x="66" y="10" width="8" height="18" fill="#fff"/><circle cx="70" cy="6" r="3" fill="#fff"/><rect x="64" y="90" width="12" height="18" fill="#123424"/><rect x="18" y="140" width="104" height="16" fill="#fff"/><rect x="8" y="156" width="124" height="10" fill="#fff"/><rect x="30" y="120" width="10" height="20" fill="#fff"/><rect x="100" y="120" width="10" height="20" fill="#fff"/></svg></div><div class="header-row">  <div class="brand">    <div class="emblem" style="width:36px;height:36px;"><span style="display:inline-flex;width:24px;height:24px;"><svg viewBox="0 0 48 54" class="crest-svg" xmlns="http://www.w3.org/2000/svg"><path d="M24 2 L44 9 V24 C44 37 36 47 24 52 C12 47 4 37 4 24 V9 Z" fill="#0f2318" stroke="#e4c976" stroke-width="2"/><path d="M24 6 L40 11.5 V24 C40 34.5 33.5 42.5 24 47 C14.5 42.5 8 34.5 8 24 V11.5 Z" fill="none" stroke="#c9a24a" stroke-width="1"/><path d="M15 33 L19 18 L24 26 L29 18 L33 33 Z" fill="#c9a24a"/><path d="M17 33 H31 L29 39 H19 Z" fill="#d64545"/><path d="M14 20 C10 24 10 30 13 35" stroke="#e4c976" stroke-width="1.4" fill="none" stroke-linecap="round"/><path d="M34 20 C38 24 38 30 35 35" stroke="#e4c976" stroke-width="1.4" fill="none" stroke-linecap="round"/><text x="24" y="15" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#f3e6bb" font-weight="700">DPRD</text></svg></span></div>    <div class="brand-text"><h1 style="font-size:15px;">e-Parlemen</h1><div class="sub" style="font-size:9px;">DPRD KOTA MAGELANG</div></div>  </div>  <a href="notifikasi.html" class="bell" style="width:32px;height:32px;font-size:14px;"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="dot" style="width:14px;height:14px;font-size:8px;">3</span></a></div><div class="page-title-row">  <a class="back-btn" href="persuratan.html"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 12H5"/><path d="M11 18l-6-6 6-6"/></svg></a>  <div class="page-title"><h2>Detail Surat Masuk</h2><p>Informasi lengkap surat</p></div>  <div class="header-actions"><a class="hdr-btn" href="#"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v13"/><path d="M6 11l6 6 6-6"/><path d="M5 21h14"/></svg> PDF</a></div></div>
+    <div class="hdr-watermark"><svg viewBox="0 0 140 170" class="hdr-watermark-svg" xmlns="http://www.w3.org/2000/svg"><rect x="58" y="70" width="24" height="95" fill="#fff"/><polygon points="46,70 70,26 94,70" fill="#fff"/><rect x="66" y="10" width="8" height="18" fill="#fff"/><circle cx="70" cy="6" r="3" fill="#fff"/><rect x="64" y="90" width="12" height="18" fill="#123424"/><rect x="18" y="140" width="104" height="16" fill="#fff"/><rect x="8" y="156" width="124" height="10" fill="#fff"/><rect x="30" y="120" width="10" height="20" fill="#fff"/><rect x="100" y="120" width="10" height="20" fill="#fff"/></svg></div><div class="header-row" style="align-items:center;">  <a class="back-btn" href="persuratan.html" style="margin-right:2px;"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 12H5"/><path d="M11 18l-6-6 6-6"/></svg></a>  <div class="brand">    <div class="emblem" style="width:36px;height:36px;"><span style="display:inline-flex;width:24px;height:24px;"><svg viewBox="0 0 48 54" class="crest-svg" xmlns="http://www.w3.org/2000/svg"><path d="M24 2 L44 9 V24 C44 37 36 47 24 52 C12 47 4 37 4 24 V9 Z" fill="#0f2318" stroke="#e4c976" stroke-width="2"/><path d="M24 6 L40 11.5 V24 C40 34.5 33.5 42.5 24 47 C14.5 42.5 8 34.5 8 24 V11.5 Z" fill="none" stroke="#c9a24a" stroke-width="1"/><path d="M15 33 L19 18 L24 26 L29 18 L33 33 Z" fill="#c9a24a"/><path d="M17 33 H31 L29 39 H19 Z" fill="#d64545"/><path d="M14 20 C10 24 10 30 13 35" stroke="#e4c976" stroke-width="1.4" fill="none" stroke-linecap="round"/><path d="M34 20 C38 24 38 30 35 35" stroke="#e4c976" stroke-width="1.4" fill="none" stroke-linecap="round"/><text x="24" y="15" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#f3e6bb" font-weight="700">DPRD</text></svg></span></div>    <div class="brand-text"><h1 style="font-size:15px;">e-Parlemen</h1><div class="sub" style="font-size:9px;">DPRD KOTA MAGELANG</div></div>  </div>  <div class="header-actions"><a class="hdr-btn" href="#"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v13"/><path d="M6 11l6 6 6-6"/><path d="M5 21h14"/></svg> PDF</a><a href="notifikasi.html" class="bell" style="width:32px;height:32px;font-size:14px;"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="dot" style="width:14px;height:14px;font-size:8px;">3</span></a></div></div>
   </div>
   <div class="hdr-wave"><svg viewBox="0 0 400 30" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hdrWaveGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="var(--green-dark)"/><stop offset="60%" stop-color="var(--green)"/><stop offset="100%" stop-color="var(--green-mid)"/></linearGradient></defs><path d="M0,12 C90,32 130,-6 220,10 C290,22 330,4 400,14 L400,0 L0,0 Z" fill="url(#hdrWaveGrad)"/><path d="M0,12 C90,32 130,-6 220,10 C290,22 330,4 400,14 L400,30 L0,30 Z" fill="var(--cream)"/><path d="M0,12 C90,32 130,-6 220,10 C290,22 330,4 400,14" fill="none" stroke="#c0392b" stroke-width="2.2" opacity=".85"/></svg></div>
   <div class="screen">
 
+    <div class="screen-title">Detail Surat Masuk</div>
+
     <div class="card">
       <div style="display:flex; justify-content:space-between; align-items:flex-start;">
         <span class="badge badge-info">SURAT MASUK</span>
-        <span class="badge badge-danger">Perlu Tindak Lanjut</span>
+        <span class="badge" id="statusBadge">Perlu Tindak Lanjut</span>
       </div>
-      <h3 class="ctitle" style="margin-top:10px;">Permohonan Data</h3>
-      <div class="hint">Nomor: 070/PD/DPRD/V/2025</div>
+      <h3 class="ctitle" style="margin-top:10px;" id="suratTitle">Permohonan Data</h3>
+      <div class="hint" id="suratNomor">Nomor: 070/PD/DPRD/V/2025</div>
       <div class="divider"></div>
-      <div class="kv-row"><span class="k">Tanggal Surat</span><span class="v">16 Mei 2025</span></div>
-      <div class="kv-row"><span class="k">Diterima Sekretariat</span><span class="v">16 Mei 2025, 14.10 WIB</span></div>
-      <div class="kv-row"><span class="k">Dari</span><span class="v">Dinas PUPR Kota Magelang</span></div>
-      <div class="kv-row"><span class="k">Ditujukan Kepada</span><span class="v">Komisi I &ndash; Ir. Budi Santoso, M.T.</span></div>
-      <div class="kv-row"><span class="k">Tembusan (CC)</span><span class="v">Ketua DPRD, Sekretariat DPRD</span></div>
+      <div class="kv-row"><span class="k">Tanggal Surat</span><span class="v" id="kvTanggal">16 Mei 2025</span></div>
+      <div class="kv-row"><span class="k">Diterima Sekretariat</span><span class="v" id="kvDiterima">16 Mei 2025, 14.10 WIB</span></div>
+      <div class="kv-row"><span class="k">Dari</span><span class="v" id="kvDari">Dinas PUPR Kota Magelang</span></div>
+      <div class="kv-row"><span class="k">Ditujukan Kepada</span><span class="v" id="kvTujuan">Komisi I &ndash; Ir. Budi Santoso, M.T.</span></div>
+      <div class="kv-row"><span class="k">Tembusan (CC)</span><span class="v" id="kvTembusan">Ketua DPRD, Sekretariat DPRD</span></div>
     </div>
 
     <div class="card">
       <h3 class="ctitle">Perihal</h3>
-      <div class="hint">Permohonan data kondisi infrastruktur jalan lingkungan di wilayah Dapil I sebagai bahan pembahasan usulan Pokir tahun anggaran berjalan.</div>
+      <div class="hint" id="perihalText">Permohonan data kondisi infrastruktur jalan lingkungan di wilayah Dapil I sebagai bahan pembahasan usulan Pokir tahun anggaran berjalan.</div>
       <div class="divider"></div>
       <h3 class="ctitle">Lampiran</h3>
       <div class="list-item" style="margin-bottom:0;">
         <div class="icon-box" style="background:var(--danger-bg); color:var(--danger);">PDF</div>
-        <div class="content"><div class="title">Permohonan_Data_PUPR.pdf</div><div class="meta">1.1 MB</div></div>
+        <div class="content"><div class="title" id="lampiranName">Permohonan_Data_PUPR.pdf</div><div class="meta" id="lampiranSize">1.1 MB</div></div>
         <span class="chev"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v13"/><path d="M6 11l6 6 6-6"/><path d="M5 21h14"/></svg></span>
       </div>
     </div>
 
     <div class="card">
       <h3 class="ctitle">Status Surat</h3>
-      <div class="timeline">
+      <div class="timeline" id="timelineContainer">
         <div class="t-item done"><div class="t-title">Diterima Sekretariat</div><div class="t-time">16 Mei 2025, 14.10 WIB</div></div>
         <div class="t-item done"><div class="t-title">Didisposisikan kepada Anda</div><div class="t-time">17 Mei 2025, 08.15 WIB</div></div>
         <div class="t-item pending"><div class="t-title">Tindak Lanjut</div><div class="t-desc">Menunggu tindak lanjut dari Anda.</div></div>
       </div>
     </div>
 
-    <div class="btn-row">
-      <a class="btn btn-outline" href="#"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5 5.5-6"/></svg> Tandai Selesai</a>
-      <a class="btn btn-primary" href="disposisi.html"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h13l-3-3"/><path d="M20 17H7l3 3"/></svg> Disposisikan</a>
+    <div id="actionArea">
+      <a class="btn btn-outline" href="#" onclick="updateStatus('proses'); return false;"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg> Tindak Lanjuti</a>
     </div>
 
   </div>
@@ -361,6 +364,181 @@ function toast(msg){
   el.style.display = 'block';
   setTimeout(function(){ el.style.display = 'none'; }, 2200);
 }
+
+var suratData = {
+  '1': {
+    status: 'tindaklanjut',
+    title: 'Undangan Rapat Paripurna',
+    nomor: '005/UND/DPRD/V/2025',
+    tanggal: '19 Mei 2025',
+    diterima: '19 Mei 2025, 08.00 WIB',
+    dari: 'Sekretariat DPRD Kota Magelang',
+    tujuan: 'Seluruh Anggota DPRD Kota Magelang',
+    tembusan: 'Seluruh Anggota DPRD, Sekretariat DPRD',
+    perihal: 'Undangan menghadiri Rapat Paripurna dalam rangka pembahasan Rancangan Peraturan Daerah tentang APBD Perubahan Tahun Anggaran 2025.',
+    lampiranName: 'Undangan_Rapat_Paripurna.pdf',
+    lampiranSize: '850 KB',
+    timeline: [
+      {state:'done', title:'Diterima Sekretariat', time:'19 Mei 2025, 08.00 WIB'},
+      {state:'done', title:'Didisposisikan kepada Anda', time:'19 Mei 2025, 09.00 WIB'},
+      {state:'pending', title:'Tindak Lanjut', desc:'Menunggu konfirmasi kehadiran dari Anda.'}
+    ]
+  },
+  '2': {
+    status: 'proses',
+    title: 'Nota Dinas Ketua DPRD',
+    nomor: '800/ND/DPRD/V/2025',
+    tanggal: '18 Mei 2025',
+    diterima: '18 Mei 2025, 15.45 WIB',
+    dari: 'Ketua DPRD Kota Magelang',
+    tujuan: 'Komisi I &ndash; Ir. Budi Santoso, M.T.',
+    tembusan: 'Sekretariat DPRD',
+    perihal: 'Nota dinas perihal penugasan mengikuti kegiatan koordinasi dengan Pemerintah Provinsi Jawa Tengah terkait program pembangunan daerah.',
+    lampiranName: 'Nota_Dinas_Ketua.pdf',
+    lampiranSize: '420 KB',
+    timeline: [
+      {state:'done', title:'Diterima Sekretariat', time:'18 Mei 2025, 15.45 WIB'},
+      {state:'done', title:'Didisposisikan kepada Anda', time:'19 Mei 2025, 08.30 WIB'},
+      {state:'active', title:'Dalam Proses', desc:'Sedang ditindaklanjuti oleh Anda.'}
+    ]
+  },
+  '3': {
+    status: 'selesai',
+    title: 'Laporan Hasil Kunjungan Dapil',
+    nomor: '120/KKD/DPRD/V/2025',
+    tanggal: '17 Mei 2025',
+    diterima: '17 Mei 2025, 09.20 WIB',
+    dari: 'Komisi III DPRD Kota Magelang',
+    tujuan: 'Pimpinan DPRD Kota Magelang',
+    tembusan: 'Ketua DPRD, Sekretariat DPRD',
+    perihal: 'Laporan hasil kunjungan kerja Komisi III ke wilayah Dapil dalam rangka monitoring pelaksanaan program infrastruktur desa.',
+    lampiranName: 'Laporan_Kunjungan_Dapil.pdf',
+    lampiranSize: '2.4 MB',
+    timeline: [
+      {state:'done', title:'Diterima Sekretariat', time:'17 Mei 2025, 09.20 WIB'},
+      {state:'done', title:'Didisposisikan kepada Anda', time:'17 Mei 2025, 10.00 WIB'},
+      {state:'done', title:'Selesai Ditindaklanjuti', time:'19 Mei 2025, 13.40 WIB'}
+    ]
+  },
+  '4': {
+    status: 'tindaklanjut',
+    title: 'Permohonan Data',
+    nomor: '070/PD/DPRD/V/2025',
+    tanggal: '16 Mei 2025',
+    diterima: '16 Mei 2025, 14.10 WIB',
+    dari: 'Dinas PUPR Kota Magelang',
+    tujuan: 'Komisi I &ndash; Ir. Budi Santoso, M.T.',
+    tembusan: 'Ketua DPRD, Sekretariat DPRD',
+    perihal: 'Permohonan data kondisi infrastruktur jalan lingkungan di wilayah Dapil I sebagai bahan pembahasan usulan Pokir tahun anggaran berjalan.',
+    lampiranName: 'Permohonan_Data_PUPR.pdf',
+    lampiranSize: '1.1 MB',
+    timeline: [
+      {state:'done', title:'Diterima Sekretariat', time:'16 Mei 2025, 14.10 WIB'},
+      {state:'done', title:'Didisposisikan kepada Anda', time:'17 Mei 2025, 08.15 WIB'},
+      {state:'pending', title:'Tindak Lanjut', desc:'Menunggu tindak lanjut dari Anda.'}
+    ]
+  },
+  '5': {
+    status: 'selesai',
+    title: 'Undangan Sosialisasi Peraturan Daerah',
+    nomor: '005/UND/DPRD/V/2025',
+    tanggal: '15 Mei 2025',
+    diterima: '15 Mei 2025, 11.05 WIB',
+    dari: 'Bappeda Kota Magelang',
+    tujuan: 'Seluruh Anggota DPRD Kota Magelang',
+    tembusan: 'Sekretariat DPRD',
+    perihal: 'Undangan sosialisasi peraturan daerah terbaru terkait tata ruang wilayah kepada seluruh anggota Dewan.',
+    lampiranName: 'Undangan_Sosialisasi_Perda.pdf',
+    lampiranSize: '610 KB',
+    timeline: [
+      {state:'done', title:'Diterima Sekretariat', time:'15 Mei 2025, 11.05 WIB'},
+      {state:'done', title:'Didisposisikan kepada Anda', time:'15 Mei 2025, 13.20 WIB'},
+      {state:'done', title:'Selesai Ditindaklanjuti', time:'16 Mei 2025, 09.50 WIB'}
+    ]
+  }
+};
+
+var statusMeta = {
+  tindaklanjut: {label:'Perlu Tindak Lanjut', badgeClass:'badge-danger'},
+  proses: {label:'Dalam Proses', badgeClass:'badge-warn'},
+  selesai: {label:'Selesai', badgeClass:'badge-success'}
+};
+
+function renderSurat(id){
+  var data = suratData[id] || suratData['4'];
+  var meta = statusMeta[data.status];
+
+  var badge = document.getElementById('statusBadge');
+  if(badge){ badge.className = 'badge ' + meta.badgeClass; badge.textContent = meta.label; }
+
+  setText('suratTitle', data.title);
+  setText('suratNomor', 'Nomor: ' + data.nomor);
+  setText('kvTanggal', data.tanggal);
+  setText('kvDiterima', data.diterima);
+  setText('kvDari', data.dari);
+  setHtml('kvTujuan', data.tujuan);
+  setText('kvTembusan', data.tembusan);
+  setText('perihalText', data.perihal);
+  setText('lampiranName', data.lampiranName);
+  setText('lampiranSize', data.lampiranSize);
+
+  var timelineEl = document.getElementById('timelineContainer');
+  if(timelineEl){
+    timelineEl.innerHTML = data.timeline.map(function(step){
+      var extra = step.time ? '<div class="t-time">' + step.time + '</div>' : (step.desc ? '<div class="t-desc">' + step.desc + '</div>' : '');
+      return '<div class="t-item ' + step.state + '"><div class="t-title">' + step.title + '</div>' + extra + '</div>';
+    }).join('');
+  }
+
+  var actionArea = document.getElementById('actionArea');
+  if(actionArea){
+    if(data.status === 'tindaklanjut'){
+      actionArea.innerHTML = '<a class="btn btn-outline" href="#" onclick="updateStatus(\'proses\'); return false;"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg> Tindak Lanjuti</a>';
+    } else if(data.status === 'proses'){
+      actionArea.innerHTML = '<a class="btn btn-primary" href="#" onclick="updateStatus(\'selesai\'); return false;"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5 5.5-6"/></svg> Tandai Selesai</a>';
+    } else {
+      actionArea.innerHTML = '<div class="success-box"><span><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5 5.5-6"/></svg></span><span>Surat ini telah selesai ditindaklanjuti. Tidak ada tindakan lebih lanjut yang diperlukan.</span></div>';
+    }
+  }
+}
+function setText(id, text){
+  var el = document.getElementById(id);
+  if(el){ el.textContent = text; }
+}
+function setHtml(id, html){
+  var el = document.getElementById(id);
+  if(el){ el.innerHTML = html; }
+}
+
+var currentSuratId = '4';
+function nowLabel(){
+  var d = new Date();
+  var hh = ('0' + d.getHours()).slice(-2);
+  var mm = ('0' + d.getMinutes()).slice(-2);
+  return 'Hari ini, ' + hh + '.' + mm + ' WIB';
+}
+function updateStatus(newStatus){
+  var data = suratData[currentSuratId];
+  if(!data) return;
+  var last = data.timeline[data.timeline.length - 1];
+  last.state = 'done';
+  last.time = nowLabel();
+  delete last.desc;
+  if(newStatus === 'proses'){
+    data.timeline.push({state:'active', title:'Dalam Proses', desc:'Sedang ditindaklanjuti oleh Anda.'});
+    data.status = 'proses';
+    toast('Status diubah menjadi Dalam Proses');
+  } else if(newStatus === 'selesai'){
+    data.timeline.push({state:'done', title:'Selesai Ditindaklanjuti', time: nowLabel()});
+    data.status = 'selesai';
+    toast('Surat ditandai selesai');
+  }
+  renderSurat(currentSuratId);
+}
+
+var initialId = new URLSearchParams(window.location.search).get('id') || '4';
+currentSuratId = suratData[initialId] ? initialId : '4';
+renderSurat(currentSuratId);
 
 
 </script>

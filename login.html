@@ -338,5 +338,14 @@ body{align-items:flex-start;}
     <div class="login-footer">e-Parlemen DPRD Kota Magelang<br>&copy; 2025 Sekretariat DPRD Kota Magelang. All rights reserved.</div>
   </div>
 </div>
+<script>
+(function(){
+  var email = new URLSearchParams(window.location.search).get('email');
+  if(email){
+    var field = document.querySelector('.login-field input[type="text"]');
+    if(field){ field.value = email; }
+  }
+})();
+</script>
 </body>
 </html>
