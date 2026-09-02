@@ -104,7 +104,7 @@ a{color:inherit;}
 .btn-sm{padding:8px 13px;font-size:11.5px;}
 
 .table-wrap{background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;overflow-x:auto;}
-table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:680px;}
+table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:820px;}
 th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);padding:12px 16px;border-bottom:2px solid var(--border);background:#fbfbf9;}
 td{padding:13px 16px;border-bottom:1px solid var(--border);vertical-align:middle;}
 tr:last-child td{border-bottom:none;}
@@ -140,7 +140,6 @@ tr:hover td{background:#fafaf7;}
       <a class="snav-item" href="master-periode-reses.html"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><circle cx="8.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/></svg> Periode Reses</a>
       <a class="snav-item" href="master-jenis-kegiatan.html"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1.3" fill="currentColor" stroke="none"/></svg> Jenis Kegiatan</a>
       <a class="snav-item active" href="laporan-dapil-reses.html"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6" rx="0.6"/><rect x="12" y="8" width="3" height="10" rx="0.6"/><rect x="17" y="5" width="3" height="13" rx="0.6"/></svg> Laporan Dapil &amp; Reses</a>
-      <a class="snav-item" href="dashboard-pokir.html"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1.1 1.3 1.2 2.2h4.8c.1-.9.6-1.7 1.2-2.2A6 6 0 0 0 12 3z"/></svg> Dashboard Pokir</a>
       <div class="snav-label">Lainnya</div>
       <a class="snav-item" href="notifikasi.html"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg> Notifikasi <span class="count">5</span></a>
     </nav>
@@ -167,20 +166,17 @@ tr:hover td{background:#fafaf7;}
       <div class="hint" style="margin-bottom:16px;">Rekap kegiatan reses &amp; kunjungan dapil seluruh Anggota DPRD, dikumpulkan dari laporan yang dicatat melalui aplikasi mobile.</div>
 
       <div class="filter-bar">
-        <div class="filter-field"><label>Dapil</label>
-          <select id="filterDapil" onchange="applyFilter()">
-            <option value="">Semua Dapil</option>
-            <option value="Dapil 1">Dapil 1</option>
-            <option value="Dapil 2">Dapil 2</option>
-            <option value="Dapil 3">Dapil 3</option>
-          </select>
+        <div class="filter-field"><label>Tanggal Dari</label>
+          <input type="date" id="filterDari" onchange="applyFilter()" style="padding:10px 12px;border-radius:10px;border:1px solid var(--border);font-size:12.5px;background:#fff;font-family:inherit;color:var(--ink);">
         </div>
-        <div class="filter-field"><label>Periode Reses</label>
-          <select id="filterPeriode" onchange="applyFilter()">
-            <option value="">Semua Periode</option>
-            <option value="Reses I Tahun 2026">Reses I Tahun 2026</option>
-            <option value="Reses II Tahun 2026">Reses II Tahun 2026</option>
-            <option value="Reses III Tahun 2026">Reses III Tahun 2026</option>
+        <div class="filter-field"><label>Tanggal Sampai</label>
+          <input type="date" id="filterSampai" onchange="applyFilter()" style="padding:10px 12px;border-radius:10px;border:1px solid var(--border);font-size:12.5px;background:#fff;font-family:inherit;color:var(--ink);">
+        </div>
+        <div class="filter-field"><label>Jenis Kegiatan</label>
+          <select id="filterJenis" onchange="applyFilter()">
+            <option value="">Semua Jenis</option>
+            <option value="RESES">Reses</option>
+            <option value="KUNJUNGAN">Kunjungan Dapil</option>
           </select>
         </div>
         <button class="btn btn-outline btn-sm" onclick="resetFilter()">Reset Filter</button>
@@ -273,30 +269,40 @@ tr:hover td{background:#fafaf7;}
         </table>
       </div>
 
-      <div class="section-title">Kegiatan Terbaru</div>
+      <div class="section-title">Daftar Kegiatan Reses &amp; Kunjungan Dapil</div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Nomor Kegiatan</th><th>Anggota</th><th>Dapil</th><th>Jenis Kegiatan</th><th>Periode</th><th>Tanggal</th><th>Status</th></tr></thead>
+          <thead><tr><th>Nomor Kegiatan</th><th>Anggota</th><th>Dapil</th><th>Jenis</th><th>Jenis Kegiatan</th><th>Tanggal</th><th>Status</th><th>Aksi</th></tr></thead>
           <tbody id="tbodyKegiatan">
-            <tr data-dapil="Dapil 3" data-periode="Reses III Tahun 2026">
-              <td>RES-2026-041</td><td>Hj. Siti Rahmawati</td><td>Dapil 3</td><td>Pertemuan Masyarakat</td><td>Reses III Tahun 2026</td><td>30 Agu 2026</td>
+            <tr data-jenis="RESES" data-tanggal="2026-08-30">
+              <td>RES-2026-041</td><td>Hj. Siti Rahmawati</td><td>Dapil 3</td><td><span class="badge badge-info">Reses</span></td><td>Pertemuan Masyarakat</td><td>30 Agu 2026</td>
               <td><span class="badge badge-success">Selesai</span></td>
+              <td><a class="btn btn-outline btn-sm" href="laporan-dapil-reses-detail.html?id=1">Lihat Detail</a></td>
             </tr>
-            <tr data-dapil="Dapil 1" data-periode="">
-              <td>KJD-2026-018</td><td>Ir. Budi Santoso, M.T.</td><td>Dapil 1</td><td>Kunjungan Fasilitas Publik</td><td>&mdash; (Kunjungan Dapil)</td><td>28 Agu 2026</td>
+            <tr data-jenis="KUNJUNGAN" data-tanggal="2026-08-28">
+              <td>KJD-2026-018</td><td>Ir. Budi Santoso, M.T.</td><td>Dapil 1</td><td><span class="badge" style="background:#efe6fb;color:#7c4fd1;">Kunjungan</span></td><td>Kunjungan Fasilitas Publik</td><td>28 Agu 2026</td>
               <td><span class="badge badge-success">Selesai</span></td>
+              <td><a class="btn btn-outline btn-sm" href="laporan-dapil-reses-detail.html?id=2">Lihat Detail</a></td>
             </tr>
-            <tr data-dapil="Dapil 2" data-periode="Reses III Tahun 2026">
-              <td>RES-2026-040</td><td>R. Hendra Wijaya, S.H.</td><td>Dapil 2</td><td>Dialog Masyarakat</td><td>Reses III Tahun 2026</td><td>27 Agu 2026</td>
+            <tr data-jenis="RESES" data-tanggal="2026-08-27">
+              <td>RES-2026-040</td><td>R. Hendra Wijaya, S.H.</td><td>Dapil 2</td><td><span class="badge badge-info">Reses</span></td><td>Dialog Masyarakat</td><td>27 Agu 2026</td>
               <td><span class="badge badge-warn">Terjadwal</span></td>
+              <td><a class="btn btn-outline btn-sm" href="laporan-dapil-reses-detail.html?id=3">Lihat Detail</a></td>
             </tr>
-            <tr data-dapil="Dapil 3" data-periode="Reses III Tahun 2026">
-              <td>RES-2026-039</td><td>Drs. Ahmad Fauzi</td><td>Dapil 3</td><td>Penyerapan Aspirasi</td><td>Reses III Tahun 2026</td><td>25 Agu 2026</td>
+            <tr data-jenis="RESES" data-tanggal="2026-08-25">
+              <td>RES-2026-039</td><td>Drs. Ahmad Fauzi</td><td>Dapil 3</td><td><span class="badge badge-info">Reses</span></td><td>Penyerapan Aspirasi</td><td>25 Agu 2026</td>
               <td><span class="badge badge-success">Selesai</span></td>
+              <td><a class="btn btn-outline btn-sm" href="laporan-dapil-reses-detail.html?id=4">Lihat Detail</a></td>
             </tr>
-            <tr data-dapil="Dapil 1" data-periode="Reses II Tahun 2026">
-              <td>RES-2026-027</td><td>M. Yusuf Ridwan</td><td>Dapil 1</td><td>Sosialisasi</td><td>Reses II Tahun 2026</td><td>16 Mei 2026</td>
+            <tr data-jenis="KUNJUNGAN" data-tanggal="2026-05-10">
+              <td>KJD-2026-011</td><td>R. Hendra Wijaya, S.H.</td><td>Dapil 2</td><td><span class="badge" style="background:#efe6fb;color:#7c4fd1;">Kunjungan</span></td><td>Kunjungan Fasilitas Publik</td><td>10 Mei 2026</td>
               <td><span class="badge badge-success">Selesai</span></td>
+              <td><a class="btn btn-outline btn-sm" href="laporan-dapil-reses-detail.html?id=6">Lihat Detail</a></td>
+            </tr>
+            <tr data-jenis="RESES" data-tanggal="2026-05-16">
+              <td>RES-2026-027</td><td>M. Yusuf Ridwan</td><td>Dapil 1</td><td><span class="badge badge-info">Reses</span></td><td>Sosialisasi</td><td>16 Mei 2026</td>
+              <td><span class="badge badge-success">Selesai</span></td>
+              <td><a class="btn btn-outline btn-sm" href="laporan-dapil-reses-detail.html?id=5">Lihat Detail</a></td>
             </tr>
           </tbody>
         </table>
@@ -313,17 +319,16 @@ function toast(msg){
   setTimeout(function(){ el.style.display = 'none'; }, 2400);
 }
 function applyFilter(){
-  var dapil = document.getElementById('filterDapil').value;
-  var periode = document.getElementById('filterPeriode').value;
+  var dari = document.getElementById('filterDari').value;
+  var sampai = document.getElementById('filterSampai').value;
+  var jenis = document.getElementById('filterJenis').value;
   var visibleCount = 0;
 
-  document.querySelectorAll('#tbodyRekap tr').forEach(function(r){
-    var show = !dapil || r.dataset.dapil === dapil;
-    r.style.display = show ? '' : 'none';
-  });
-
   document.querySelectorAll('#tbodyKegiatan tr').forEach(function(r){
-    var show = (!dapil || r.dataset.dapil === dapil) && (!periode || r.dataset.periode === periode);
+    var tgl = r.dataset.tanggal;
+    var showDate = (!dari || tgl >= dari) && (!sampai || tgl <= sampai);
+    var showJenis = !jenis || r.dataset.jenis === jenis;
+    var show = showDate && showJenis;
     r.style.display = show ? '' : 'none';
     if(show) visibleCount++;
   });
@@ -332,8 +337,9 @@ function applyFilter(){
   toast('Filter diterapkan');
 }
 function resetFilter(){
-  document.getElementById('filterDapil').selectedIndex = 0;
-  document.getElementById('filterPeriode').selectedIndex = 0;
+  document.getElementById('filterDari').value = '';
+  document.getElementById('filterSampai').value = '';
+  document.getElementById('filterJenis').selectedIndex = 0;
   applyFilter();
 }
 </script>
