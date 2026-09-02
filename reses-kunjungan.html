@@ -108,12 +108,23 @@ a{color:inherit;}
   border-radius:9px; padding:8px 10px; text-decoration:none; display:inline-flex; gap:5px; align-items:center;
 }
 
-.screen{flex:1; padding:16px 16px 26px;}
+.screen{flex:1; padding:16px 16px 90px;}
 .screen-title{font-family:Georgia,'Times New Roman',serif; font-size:24px; font-weight:700; color:var(--ink); margin:2px 0 16px;}
 
 .card{background:var(--card); border-radius:14px; padding:14px; border:1px solid var(--border); box-shadow:0 1px 3px rgba(0,0,0,.05); margin-bottom:14px;}
 .card + .card{margin-top:0;}
 .section-title{font-size:14.5px; font-weight:800; color:var(--ink); margin:18px 0 10px; display:flex; justify-content:space-between; align-items:center;}
+.rk-card{background:#fff; border-radius:13px; padding:12px; border:1px solid var(--border); border-left:4px solid var(--green); margin-bottom:10px;}
+.rk-card.bl-warn{border-left-color:var(--warn);}
+.rk-card.bl-info{border-left-color:var(--info);}
+.rk-row{display:flex; gap:11px; align-items:flex-start;}
+.rk-row .icon-box{width:38px; height:38px; border-radius:10px; flex-shrink:0; display:flex; align-items:center; justify-content:center; background:var(--neutral-bg);}
+.rk-row .content{flex:1; min-width:0;}
+.rk-row .content .title{font-weight:800; font-size:12.8px; color:var(--ink); margin-bottom:2px;}
+.rk-row .content .meta{font-size:10.8px; color:var(--muted); display:flex; gap:7px; flex-wrap:wrap; align-items:center; margin-top:2px;}
+.rk-row .side{text-align:right; flex-shrink:0;}
+.rk-actions{display:flex; gap:8px; margin-top:10px; padding-top:10px; border-top:1px dashed var(--border);}
+.rk-actions .btn{flex:1;}
 .section-title .more{font-size:11.5px; font-weight:700; color:var(--green); text-decoration:none;}
 h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
 .muted{color:var(--muted);}
@@ -262,7 +273,7 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
 
 .divider{height:1px; background:var(--border); margin:14px 0;}
 .fab{
-  position:fixed; bottom:120px; right:calc(50% - 175px); width:52px; height:52px; border-radius:50%;
+  position:absolute; bottom:92px; right:18px; width:52px; height:52px; border-radius:50%; z-index:15;
   background:linear-gradient(135deg,var(--green-dark),var(--green)); color:#fff; display:flex; align-items:center; justify-content:center;
   font-size:22px; text-decoration:none; box-shadow:0 8px 18px rgba(0,0,0,.3); border:2px solid var(--gold);
 }
@@ -296,7 +307,7 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
     </div>
 
   <div class="app-header">
-    <div class="hdr-watermark"><svg viewBox="0 0 140 170" class="hdr-watermark-svg" xmlns="http://www.w3.org/2000/svg"><rect x="58" y="70" width="24" height="95" fill="#fff"/><polygon points="46,70 70,26 94,70" fill="#fff"/><rect x="66" y="10" width="8" height="18" fill="#fff"/><circle cx="70" cy="6" r="3" fill="#fff"/><rect x="64" y="90" width="12" height="18" fill="#123424"/><rect x="18" y="140" width="104" height="16" fill="#fff"/><rect x="8" y="156" width="124" height="10" fill="#fff"/><rect x="30" y="120" width="10" height="20" fill="#fff"/><rect x="100" y="120" width="10" height="20" fill="#fff"/></svg></div><div class="header-row" style="align-items:center;">  <a class="back-btn" href="beranda.html" style="margin-right:2px;"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 12H5"/><path d="M11 18l-6-6 6-6"/></svg></a>  <div class="brand">    <div class="emblem" style="width:36px;height:36px;"><span style="display:inline-flex;width:24px;height:24px;"><svg viewBox="0 0 48 54" class="crest-svg" xmlns="http://www.w3.org/2000/svg"><path d="M24 2 L44 9 V24 C44 37 36 47 24 52 C12 47 4 37 4 24 V9 Z" fill="#0f2318" stroke="#e4c976" stroke-width="2"/><path d="M24 6 L40 11.5 V24 C40 34.5 33.5 42.5 24 47 C14.5 42.5 8 34.5 8 24 V11.5 Z" fill="none" stroke="#c9a24a" stroke-width="1"/><path d="M15 33 L19 18 L24 26 L29 18 L33 33 Z" fill="#c9a24a"/><path d="M17 33 H31 L29 39 H19 Z" fill="#d64545"/><path d="M14 20 C10 24 10 30 13 35" stroke="#e4c976" stroke-width="1.4" fill="none" stroke-linecap="round"/><path d="M34 20 C38 24 38 30 35 35" stroke="#e4c976" stroke-width="1.4" fill="none" stroke-linecap="round"/><text x="24" y="15" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#f3e6bb" font-weight="700">DPRD</text></svg></span></div>    <div class="brand-text"><h1 style="font-size:15px;">e-Parlemen</h1><div class="sub" style="font-size:9px;">DPRD KOTA MAGELANG</div></div>  </div>  <div class="header-actions"><a class="hdr-btn" href="aduan.html"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 11.5a7.5 7.5 0 0 1-11.4 6.4L4 19l1.2-4.3A7.5 7.5 0 1 1 21 11.5z"/></svg> Aduan</a><a href="notifikasi.html" class="bell" style="width:32px;height:32px;font-size:14px;"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="dot" style="width:14px;height:14px;font-size:8px;">3</span></a></div></div>
+    <div class="hdr-watermark"><svg viewBox="0 0 140 170" class="hdr-watermark-svg" xmlns="http://www.w3.org/2000/svg"><rect x="58" y="70" width="24" height="95" fill="#fff"/><polygon points="46,70 70,26 94,70" fill="#fff"/><rect x="66" y="10" width="8" height="18" fill="#fff"/><circle cx="70" cy="6" r="3" fill="#fff"/><rect x="64" y="90" width="12" height="18" fill="#123424"/><rect x="18" y="140" width="104" height="16" fill="#fff"/><rect x="8" y="156" width="124" height="10" fill="#fff"/><rect x="30" y="120" width="10" height="20" fill="#fff"/><rect x="100" y="120" width="10" height="20" fill="#fff"/></svg></div><div class="header-row" style="align-items:center;">  <a class="back-btn" href="beranda.html" style="margin-right:2px;"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 12H5"/><path d="M11 18l-6-6 6-6"/></svg></a>  <div class="brand">    <div class="emblem" style="width:36px;height:36px;"><span style="display:inline-flex;width:24px;height:24px;"><svg viewBox="0 0 48 54" class="crest-svg" xmlns="http://www.w3.org/2000/svg"><path d="M24 2 L44 9 V24 C44 37 36 47 24 52 C12 47 4 37 4 24 V9 Z" fill="#0f2318" stroke="#e4c976" stroke-width="2"/><path d="M24 6 L40 11.5 V24 C40 34.5 33.5 42.5 24 47 C14.5 42.5 8 34.5 8 24 V11.5 Z" fill="none" stroke="#c9a24a" stroke-width="1"/><path d="M15 33 L19 18 L24 26 L29 18 L33 33 Z" fill="#c9a24a"/><path d="M17 33 H31 L29 39 H19 Z" fill="#d64545"/><path d="M14 20 C10 24 10 30 13 35" stroke="#e4c976" stroke-width="1.4" fill="none" stroke-linecap="round"/><path d="M34 20 C38 24 38 30 35 35" stroke="#e4c976" stroke-width="1.4" fill="none" stroke-linecap="round"/><text x="24" y="15" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#f3e6bb" font-weight="700">DPRD</text></svg></span></div>    <div class="brand-text"><h1 style="font-size:15px;">e-Parlemen</h1><div class="sub" style="font-size:9px;">DPRD KOTA MAGELANG</div></div>  </div>  <div class="header-actions"><a href="notifikasi.html" class="bell" style="width:32px;height:32px;font-size:14px;"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="dot" style="width:14px;height:14px;font-size:8px;">3</span></a></div></div>
   </div>
   <div class="hdr-wave"><svg viewBox="0 0 400 30" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hdrWaveGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="var(--green-dark)"/><stop offset="60%" stop-color="var(--green)"/><stop offset="100%" stop-color="var(--green-mid)"/></linearGradient></defs><path d="M0,12 C90,32 130,-6 220,10 C290,22 330,4 400,14 L400,0 L0,0 Z" fill="url(#hdrWaveGrad)"/><path d="M0,12 C90,32 130,-6 220,10 C290,22 330,4 400,14 L400,30 L0,30 Z" fill="var(--cream)"/><path d="M0,12 C90,32 130,-6 220,10 C290,22 330,4 400,14" fill="none" stroke="#c0392b" stroke-width="2.2" opacity=".85"/></svg></div>
   <div class="screen">
@@ -304,52 +315,215 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
     <div class="screen-title">Reses &amp; Kunjungan Dapil</div>
 
     <div class="tabs">
-      <span class="tab active">Kegiatan Reses</span>
-      <span class="tab">Kunjungan Dapil</span>
+      <button type="button" class="tab active" data-tabgroup="rk" onclick="showTab('rk','reses',this); setFabTarget('reses');">Kegiatan Reses</button>
+      <button type="button" class="tab" data-tabgroup="rk" onclick="showTab('rk','dapil',this); setFabTarget('kunjungan');">Kunjungan Dapil</button>
+      <button type="button" class="tab" data-tabgroup="rk" onclick="showTab('rk','laporan',this); setFabTarget('reses');">Laporan</button>
     </div>
 
-    <div class="card">
-      <h3 class="ctitle">Ringkasan Reses Tahun 2025</h3>
-      <div class="stats-grid">
-        <div class="stat"><div class="stat-ic" style="background:var(--warn-bg);color:var(--warn);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><circle cx="8.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/></svg></div><div class="num">3</div><div class="lbl">Kegiatan Reses</div></div>
-        <div class="stat danger"><div class="stat-ic" style="background:var(--success-bg);color:var(--success);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5 5.5-6"/></svg></div><div class="num">128</div><div class="lbl">Aspirasi Diterima</div></div>
-        <div class="stat warn"><div class="stat-ic" style="background:var(--warn-bg);color:var(--warn);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg></div><div class="num">84</div><div class="lbl">Dalam Proses</div></div>
-        <div class="stat success"><div class="stat-ic" style="background:var(--neutral-bg);color:var(--neutral);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 20V10"/><path d="M11 20V4"/><path d="M18 20v-7"/><path d="M3 20h18"/></svg></div><div class="num">44</div><div class="lbl">Ditindaklanjuti</div></div>
+    <div id="rk-reses" data-panel-group="rk" style="display:block;">
+
+      <div class="card">
+        <h3 class="ctitle">Ringkasan Reses Tahun 2025</h3>
+        <div class="stats-grid">
+          <div class="stat"><div class="stat-ic" style="background:var(--warn-bg);color:var(--warn);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><circle cx="8.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/></svg></div><div class="num">3</div><div class="lbl">Kegiatan Reses</div></div>
+          <div class="stat danger"><div class="stat-ic" style="background:var(--success-bg);color:var(--success);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5 5.5-6"/></svg></div><div class="num">128</div><div class="lbl">Aspirasi Diterima</div></div>
+          <div class="stat warn"><div class="stat-ic" style="background:var(--warn-bg);color:var(--warn);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg></div><div class="num">84</div><div class="lbl">Dalam Proses</div></div>
+          <div class="stat success"><div class="stat-ic" style="background:var(--neutral-bg);color:var(--neutral);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 20V10"/><path d="M11 20V4"/><path d="M18 20v-7"/><path d="M3 20h18"/></svg></div><div class="num">44</div><div class="lbl">Ditindaklanjuti</div></div>
+        </div>
       </div>
+
+      <div class="section-title" style="margin-top:0;">Daftar Kegiatan Reses</div>
+
+      <div class="rk-card bl-warn">
+        <div class="rk-row">
+          <div class="icon-box" style="background:var(--warn-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><circle cx="8.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/></svg></div>
+          <div class="content">
+            <div class="title">Reses Masa Persidangan III Tahun 2025</div>
+            <div class="meta">Belum dijadwalkan &middot; belum ada aspirasi</div>
+          </div>
+          <div class="side"><span class="badge badge-neutral">Draft</span></div>
+        </div>
+        <div class="rk-actions">
+          <a class="btn btn-outline btn-sm" href="reses-buat.html?jenis=reses&amp;id=4&amp;mode=edit"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Edit</a>
+          <button type="button" class="btn btn-danger-outline btn-sm" onclick="hapusKegiatan(this,'Reses Masa Persidangan III Tahun 2025')"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h16"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M6 7l1 13a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-13"/><path d="M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></svg> Hapus</button>
+        </div>
+      </div>
+
+      <div class="rk-card bl-danger">
+        <div class="rk-row">
+          <div class="icon-box" style="background:var(--danger-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><circle cx="8.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/></svg></div>
+          <div class="content">
+            <div class="title">Reses Masa Persidangan II Tahun 2025</div>
+            <div class="meta">10&ndash;17 Mei 2025 &middot; 5 Kecamatan</div>
+            <div class="meta"><span class="badge badge-neutral">46 Aspirasi</span></div>
+          </div>
+          <div class="side"><span class="badge badge-success">Selesai</span></div>
+        </div>
+        <div class="rk-actions">
+          <a class="btn btn-outline" href="reses-detail.html?id=1"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg> Lihat Detail</a>
+        </div>
+      </div>
+
+      <div class="rk-card">
+        <div class="rk-row">
+          <div class="icon-box"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><circle cx="8.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/></svg></div>
+          <div class="content">
+            <div class="title">Reses Masa Persidangan I Tahun 2025</div>
+            <div class="meta">10&ndash;18 Feb 2025 &middot; 6 Kecamatan</div>
+            <div class="meta"><span class="badge badge-neutral">38 Aspirasi</span></div>
+          </div>
+          <div class="side"><span class="badge badge-success">Selesai</span></div>
+        </div>
+        <div class="rk-actions">
+          <a class="btn btn-outline" href="reses-detail.html?id=2"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg> Lihat Detail</a>
+        </div>
+      </div>
+
+      <div class="rk-card">
+        <div class="rk-row">
+          <div class="icon-box"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><circle cx="8.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/></svg></div>
+          <div class="content">
+            <div class="title">Reses Masa Sidang III Tahun 2024</div>
+            <div class="meta">15&ndash;22 Agu 2024 &middot; 6 Kecamatan</div>
+            <div class="meta"><span class="badge badge-neutral">41 Aspirasi</span></div>
+          </div>
+          <div class="side"><span class="badge badge-success">Selesai</span></div>
+        </div>
+        <div class="rk-actions">
+          <a class="btn btn-outline" href="reses-detail.html?id=3"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg> Lihat Detail</a>
+        </div>
+      </div>
+
     </div>
 
-    <a class="list-item bl-danger" href="laporan-reses.html">
-      <div class="icon-box" style="background:var(--danger-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><circle cx="8.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/></svg></div>
-      <div class="content">
-        <div class="title">Reses Masa Persidangan II Tahun 2025</div>
-        <div class="meta">10&ndash;17 Mei 2025 &middot; 5 Kecamatan</div>
-        <div class="meta"><span class="badge badge-neutral">46 Aspirasi</span><span class="badge badge-warn">28 Proses</span><span class="badge badge-success">18 Selesai</span></div>
-      </div>
-      <div class="side"><span class="badge badge-success">Selesai</span></div>
-    </a>
+    <div id="rk-dapil" data-panel-group="rk" style="display:none;">
 
-    <div class="section-title">Riwayat Kegiatan Reses</div>
-    <a class="list-item" href="laporan-reses.html">
-      <div class="icon-box"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><circle cx="8.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/></svg></div>
-      <div class="content"><div class="title">Reses Masa Persidangan I Tahun 2025</div><div class="meta">10&ndash;18 Feb 2025 &middot; 6 Kecamatan</div></div>
-      <div class="side">38 Aspirasi</div>
-    </a>
-    <a class="list-item" href="laporan-reses.html">
-      <div class="icon-box"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><circle cx="8.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/></svg></div>
-      <div class="content"><div class="title">Reses Masa Sidang III Tahun 2024</div><div class="meta">15&ndash;22 Agu 2024 &middot; 6 Kecamatan</div></div>
-      <div class="side">41 Aspirasi</div>
-    </a>
-
-    <div class="section-title">Menyerap Aspirasi</div>
-    <div class="card">
-      <div class="hint" style="margin-bottom:10px;">Selama kunjungan/reses, catat aspirasi masyarakat sebagai usulan Pokok Pikiran (Pokir), atau catat sebagai aduan bila diterima di luar jadwal penugasan resmi.</div>
-      <div class="btn-row">
-        <a class="btn btn-primary" href="tambah-pokir.html"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1.1 1.3 1.2 2.2h4.8c.1-.9.6-1.7 1.2-2.2A6 6 0 0 0 12 3z"/></svg> Tambah Pokir</a>
-        <a class="btn btn-outline" href="aduan.html"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 11.5a7.5 7.5 0 0 1-11.4 6.4L4 19l1.2-4.3A7.5 7.5 0 1 1 21 11.5z"/></svg> Catat Aduan</a>
+      <div class="card">
+        <h3 class="ctitle">Ringkasan Kunjungan Dapil Tahun 2025</h3>
+        <div class="stats-grid">
+          <div class="stat"><div class="stat-ic" style="background:var(--info-bg);color:var(--info);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.3" r="2.4"/></svg></div><div class="num">5</div><div class="lbl">Kunjungan Bulan Ini</div></div>
+          <div class="stat info"><div class="stat-ic" style="background:var(--info-bg);color:var(--info);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/></svg></div><div class="num">8</div><div class="lbl">Wilayah Dikunjungi</div></div>
+          <div class="stat"><div class="stat-ic" style="background:var(--success-bg);color:var(--success);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.4"/><path d="M2 20c.8-3.4 3.4-5.3 7-5.3s6.2 1.9 7 5.3"/><path d="M15.5 15c2.6.3 4.3 2 5 5"/></svg></div><div class="num">312</div><div class="lbl">Warga Ditemui</div></div>
+          <div class="stat warn"><div class="stat-ic" style="background:var(--warn-bg);color:var(--warn);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1.1 1.3 1.2 2.2h4.8c.1-.9.6-1.7 1.2-2.2A6 6 0 0 0 12 3z"/></svg></div><div class="num">56</div><div class="lbl">Aspirasi Tercatat</div></div>
+        </div>
       </div>
+
+      <div class="section-title" style="margin-top:0;">Daftar Kunjungan Dapil</div>
+
+      <div class="rk-card bl-warn">
+        <div class="rk-row">
+          <div class="icon-box" style="background:var(--warn-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.3" r="2.4"/></svg></div>
+          <div class="content">
+            <div class="title">Kunjungan Sosialisasi Perda Retribusi</div>
+            <div class="meta">Belum dijadwalkan &middot; Kec. Magelang Tengah</div>
+          </div>
+          <div class="side"><span class="badge badge-neutral">Draft</span></div>
+        </div>
+        <div class="rk-actions">
+          <a class="btn btn-outline btn-sm" href="reses-buat.html?jenis=kunjungan&amp;id=4&amp;mode=edit"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Edit</a>
+          <button type="button" class="btn btn-danger-outline btn-sm" onclick="hapusKegiatan(this,'Kunjungan Sosialisasi Perda Retribusi')"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h16"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M6 7l1 13a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-13"/><path d="M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></svg> Hapus</button>
+        </div>
+      </div>
+
+      <div class="rk-card bl-info">
+        <div class="rk-row">
+          <div class="icon-box" style="background:var(--info-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.3" r="2.4"/></svg></div>
+          <div class="content">
+            <div class="title">Kunjungan Fasilitas Kesehatan Puskesmas Magelang Utara</div>
+            <div class="meta">20 Mei 2025 &middot; Kec. Magelang Utara</div>
+            <div class="meta"><span class="badge badge-neutral">14 Aspirasi</span></div>
+          </div>
+          <div class="side"><span class="badge badge-success">Selesai</span></div>
+        </div>
+        <div class="rk-actions">
+          <a class="btn btn-outline" href="reses-detail.html?id=5"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg> Lihat Detail</a>
+        </div>
+      </div>
+
+      <div class="rk-card">
+        <div class="rk-row">
+          <div class="icon-box"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.3" r="2.4"/></svg></div>
+          <div class="content">
+            <div class="title">Kunjungan Lapangan Proyek Drainase Kel. Wates</div>
+            <div class="meta">12 Mei 2025 &middot; Kec. Magelang Utara</div>
+            <div class="meta"><span class="badge badge-neutral">18 Aspirasi</span></div>
+          </div>
+          <div class="side"><span class="badge badge-success">Selesai</span></div>
+        </div>
+        <div class="rk-actions">
+          <a class="btn btn-outline" href="reses-detail.html?id=6"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg> Lihat Detail</a>
+        </div>
+      </div>
+
+      <div class="rk-card">
+        <div class="rk-row">
+          <div class="icon-box"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.3" r="2.4"/></svg></div>
+          <div class="content">
+            <div class="title">Kunjungan Fasilitas Publik Pasar Rejowinangun</div>
+            <div class="meta">28 Apr 2025 &middot; Kec. Magelang Tengah</div>
+            <div class="meta"><span class="badge badge-neutral">22 Aspirasi</span></div>
+          </div>
+          <div class="side"><span class="badge badge-success">Selesai</span></div>
+        </div>
+        <div class="rk-actions">
+          <a class="btn btn-outline" href="reses-detail.html?id=7"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg> Lihat Detail</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="rk-laporan" data-panel-group="rk" style="display:none;">
+
+      <div class="card">
+        <h3 class="ctitle">Ringkasan Tahun 2025</h3>
+        <div class="stats-grid cols-3">
+          <div class="stat"><div class="stat-ic" style="background:var(--warn-bg);color:var(--warn);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><circle cx="8.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/></svg></div><div class="num">6</div><div class="lbl">Kegiatan</div></div>
+          <div class="stat"><div class="stat-ic" style="background:var(--info-bg);color:var(--info);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1.1 1.3 1.2 2.2h4.8c.1-.9.6-1.7 1.2-2.2A6 6 0 0 0 12 3z"/></svg></div><div class="num">128</div><div class="lbl">Aspirasi</div></div>
+          <div class="stat warn"><div class="stat-ic" style="background:var(--warn-bg);color:var(--warn);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg></div><div class="num">84</div><div class="lbl">Proses</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="ctitle">Status Tindak Lanjut Aspirasi</h3>
+        <div class="donut-wrap">
+          <div class="donut" style="background:conic-gradient(var(--success) 0 34%, var(--warn) 34% 100%, var(--danger) 100% 100%);">
+            <div class="donut-inner"><div class="n">128</div><div class="l">Total</div></div>
+          </div>
+          <div class="legend">
+            <div class="li"><span class="dot" style="background:var(--success);"></span> Selesai &middot; 44 (34%)</div>
+            <div class="li"><span class="dot" style="background:var(--warn);"></span> Dalam Proses &middot; 84 (66%)</div>
+            <div class="li"><span class="dot" style="background:var(--danger);"></span> Ditolak &middot; 12 (9%)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="ctitle">Kategori Aspirasi Terbanyak</h3>
+        <div class="bar-row"><div class="bar-label"><span>Infrastruktur</span><span>52 (41%)</span></div><div class="bar-track"><div class="bar-fill" style="width:82%;"></div></div></div>
+        <div class="bar-row"><div class="bar-label"><span>Pendidikan</span><span>25 (20%)</span></div><div class="bar-track"><div class="bar-fill" style="width:40%;"></div></div></div>
+        <div class="bar-row"><div class="bar-label"><span>Kesehatan</span><span>18 (14%)</span></div><div class="bar-track"><div class="bar-fill" style="width:28%;"></div></div></div>
+        <div class="bar-row"><div class="bar-label"><span>Ekonomi &amp; UMKM</span><span>15 (12%)</span></div><div class="bar-track"><div class="bar-fill" style="width:24%;"></div></div></div>
+        <div class="bar-row"><div class="bar-label"><span>Lainnya</span><span>18 (14%)</span></div><div class="bar-track"><div class="bar-fill" style="width:22%;"></div></div></div>
+      </div>
+
+      <div class="section-title">Kegiatan Terbaru</div>
+      <div class="list-item">
+        <div class="icon-box"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l1.6-2.5h4.8L16 7"/><circle cx="12" cy="13.5" r="3.4"/></svg></div>
+        <div class="content"><div class="title">Reses Masa Persidangan II Tahun 2025</div><div class="meta">10&ndash;17 Mei 2025 &middot; 5 Kecamatan</div></div>
+        <div class="side">46 aspirasi</div>
+      </div>
+      <div class="list-item">
+        <div class="icon-box"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l1.6-2.5h4.8L16 7"/><circle cx="12" cy="13.5" r="3.4"/></svg></div>
+        <div class="content"><div class="title">Kunjungan Dapil Dapil II</div><div class="meta">22 April 2025 &middot; Kec. Magelang Selatan</div></div>
+        <div class="side">21 aspirasi</div>
+      </div>
+
+      <div class="hint" style="text-align:center; margin-top:6px;">Data diperbarui terakhir pada 24 Mei 2025, 08.30 WIB &middot; Sumber: Sekretariat DPRD Kota Magelang</div>
+
     </div>
 
   </div>
+  <a class="fab" href="reses-buat.html?jenis=reses" id="fabTambah" aria-label="Tambah Kunjungan"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:22px;height:22px;stroke-width:2.5;"><path d="M12 5v14"/><path d="M5 12h14"/></svg></a>
 <div class="bottomnav"><a class="navitem" href="beranda.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></span>Beranda</a><a class="navitem" href="notifikasi.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span>Notifikasi</a><a class="navitem" href="scan-qr.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="3" height="3" rx="0.6"/><rect x="18" y="14" width="3" height="3" rx="0.6"/><rect x="14" y="18" width="3" height="3" rx="0.6"/><rect x="18" y="18" width="3" height="3" rx="0.6"/></svg></span>Scan QR</a><a class="navitem active" href="agenda-kegiatan.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><circle cx="8.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/></svg></span>Agenda</a><a class="navitem" href="profil.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 5-6 8-6s6.5 2 8 6"/></svg></span>Profil</a></div>
 </div>
 <div class="toast" id="toast"></div>
@@ -368,6 +542,16 @@ function toast(msg){
   el.textContent = msg;
   el.style.display = 'block';
   setTimeout(function(){ el.style.display = 'none'; }, 2200);
+}
+function setFabTarget(jenis){
+  var fab = document.getElementById('fabTambah');
+  if(fab){ fab.href = 'reses-buat.html?jenis=' + jenis; }
+}
+function hapusKegiatan(btn, nama){
+  if(!confirm('Hapus kegiatan "' + nama + '"? Data draf ini tidak dapat dikembalikan.')) return;
+  var card = btn.closest('.rk-card');
+  if(card){ card.remove(); }
+  toast('Kegiatan berhasil dihapus');
 }
 
 

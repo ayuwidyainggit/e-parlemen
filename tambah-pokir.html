@@ -323,6 +323,13 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
         </div>
       </div>
       <div class="field">
+        <label style="display:flex; align-items:center; gap:9px; cursor:pointer; margin-bottom:4px;">
+          <input type="checkbox" id="prioritasCheck" style="width:18px; height:18px; padding:0; border-radius:5px; accent-color:var(--green); flex-shrink:0;">
+          <span>Tandai sebagai Prioritas</span>
+        </label>
+        <div class="hint">Usulan prioritas akan mendapat perhatian lebih dalam pembahasan Musrenbang.</div>
+      </div>
+      <div class="field">
         <label>Sumber Aspirasi</label>
         <select>
           <option>Reses Masa Persidangan II 2025</option>
@@ -348,7 +355,7 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
         <div class="upload-box"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l1.6-2.5h4.8L16 7"/><circle cx="12" cy="13.5" r="3.4"/></svg></span>Ketuk untuk unggah foto lokasi/kondisi</div>
       </div>
     </div>
-    <a class="btn btn-primary" href="pokir.html" onclick="toast('Usulan pokir diajukan')"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4l16 8-16 8 4-8-4-8z"/></svg> Ajukan ke Sekretariat</a>
+    <a class="btn btn-primary" href="pokir.html" onclick="ajukanPokir(event)"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4l16 8-16 8 4-8-4-8z"/></svg> Ajukan ke Sekretariat</a>
     <div class="hint" style="text-align:center; margin-top:10px;">Usulan akan diverifikasi Sekretariat sebelum dibahas dalam Musrenbang dan diusulkan ke RKPD.</div>
 
   </div>
@@ -370,6 +377,10 @@ function toast(msg){
   el.textContent = msg;
   el.style.display = 'block';
   setTimeout(function(){ el.style.display = 'none'; }, 2200);
+}
+function ajukanPokir(e){
+  var isPrioritas = document.getElementById('prioritasCheck').checked;
+  toast(isPrioritas ? 'Usulan pokir prioritas diajukan' : 'Usulan pokir diajukan');
 }
 
 

@@ -308,11 +308,11 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
       <span>Agenda dapat dijadwalkan oleh Anda maupun oleh Admin Sekretariat, lalu otomatis masuk ke kalender kegiatan Dewan.</span>
     </div>
     <div class="tabs">
-      <span class="tab active">Semua</span>
-      <span class="tab">Rapat</span>
-      <span class="tab">Kunjungan</span>
-      <span class="tab">Reses</span>
-      <span class="tab">Lainnya</span>
+      <button type="button" class="tab active" data-tabgroup="ag" onclick="showTab('ag','semua',this)">Semua</button>
+      <button type="button" class="tab" data-tabgroup="ag" onclick="showTab('ag','rapat',this)">Rapat</button>
+      <button type="button" class="tab" data-tabgroup="ag" onclick="showTab('ag','kunjungan',this)">Kunjungan</button>
+      <button type="button" class="tab" data-tabgroup="ag" onclick="showTab('ag','reses',this)">Reses</button>
+      <button type="button" class="tab" data-tabgroup="ag" onclick="showTab('ag','lainnya',this)">Lainnya</button>
     </div>
 
     <div class="card">
@@ -329,66 +329,148 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
       </div>
     </div>
 
-    <div class="section-title">Agenda Hari Ini &ndash; Sabtu, 24 Mei</div>
-    <a class="list-item bl-warn" href="detail-undangan.html">
-      <div class="icon-box" style="background:var(--warn-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c1-3.6 3.6-5.5 5.5-5.5s4.5 1.9 5.5 5.5"/><path d="M14.5 15.2c1.9.2 3.7 2 4.5 4.8"/></svg></div>
-      <div class="content">
-        <div class="title">Rapat Badan Anggaran</div>
-        <div class="meta"><span><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg> 10.00&ndash;12.00</span><span><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.3" r="2.4"/></svg> R. Rapat Banggar</span></div>
-        <div class="meta"><span><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 5-6 8-6s6.5 2 8 6"/></svg> 25 Peserta</span><span class="badge badge-gold">Dijadwalkan Admin</span></div>
-      </div>
-      <div class="side"><span class="badge badge-warn">Berlangsung</span></div>
-    </a>
-    <a class="list-item" href="detail-undangan.html">
-      <div class="icon-box"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c1-3.6 3.6-5.5 5.5-5.5s4.5 1.9 5.5 5.5"/><path d="M14.5 15.2c1.9.2 3.7 2 4.5 4.8"/></svg></div>
-      <div class="content">
-        <div class="title">Rapat Komisi I</div>
-        <div class="meta"><span><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg> 13.00&ndash;15.00</span><span><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.3" r="2.4"/></svg> R. Rapat Komisi I</span></div>
-      </div>
-      <div class="side"><span class="badge badge-info">Akan Datang</span></div>
-    </a>
-    <a class="list-item bl-info" href="reses-kunjungan.html">
-      <div class="icon-box" style="background:var(--info-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="9" width="16" height="12" rx="1"/><path d="M9 21v-5h6v5"/><path d="M4 9l8-5 8 5"/></svg></div>
-      <div class="content">
-        <div class="title">Kunjungan Kerja Komisi III</div>
-        <div class="meta"><span><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg> 16.00&ndash;17.00</span><span><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.3" r="2.4"/></svg> Kec. Magelang Utara</span></div>
-      </div>
-      <div class="side"><span class="badge badge-info">Akan Datang</span></div>
-    </a>
+    <div id="ag-semua" data-panel-group="ag" style="display:block;">
+      <div class="section-title">Agenda Hari Ini &ndash; Sabtu, 24 Mei</div>
+      <a class="list-item bl-warn" href="detail-undangan.html">
+        <div class="icon-box" style="background:var(--warn-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c1-3.6 3.6-5.5 5.5-5.5s4.5 1.9 5.5 5.5"/><path d="M14.5 15.2c1.9.2 3.7 2 4.5 4.8"/></svg></div>
+        <div class="content">
+          <div class="title">Rapat Badan Anggaran</div>
+          <div class="meta"><span><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg> 10.00&ndash;12.00</span><span><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.3" r="2.4"/></svg> R. Rapat Banggar</span></div>
+          <div class="meta"><span><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 5-6 8-6s6.5 2 8 6"/></svg> 25 Peserta</span><span class="badge badge-gold">Dijadwalkan Admin</span></div>
+        </div>
+        <div class="side"><span class="badge badge-warn">Berlangsung</span></div>
+      </a>
+      <a class="list-item" href="detail-undangan.html">
+        <div class="icon-box"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c1-3.6 3.6-5.5 5.5-5.5s4.5 1.9 5.5 5.5"/><path d="M14.5 15.2c1.9.2 3.7 2 4.5 4.8"/></svg></div>
+        <div class="content">
+          <div class="title">Rapat Komisi I</div>
+          <div class="meta"><span><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg> 13.00&ndash;15.00</span><span><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.3" r="2.4"/></svg> R. Rapat Komisi I</span></div>
+        </div>
+        <div class="side"><span class="badge badge-info">Akan Datang</span></div>
+      </a>
+      <a class="list-item bl-info" href="reses-kunjungan.html">
+        <div class="icon-box" style="background:var(--info-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="9" width="16" height="12" rx="1"/><path d="M9 21v-5h6v5"/><path d="M4 9l8-5 8 5"/></svg></div>
+        <div class="content">
+          <div class="title">Kunjungan Kerja Komisi III</div>
+          <div class="meta"><span><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg> 16.00&ndash;17.00</span><span><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.3" r="2.4"/></svg> Kec. Magelang Utara</span></div>
+        </div>
+        <div class="side"><span class="badge badge-info">Akan Datang</span></div>
+      </a>
 
-    <div class="section-title">Agenda Mendatang</div>
-    <a class="list-item bl-success" href="detail-undangan.html">
-      <div class="icon-box" style="background:var(--success-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><circle cx="8.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/></svg></div>
-      <div class="content">
-        <div class="title">Rapat Paripurna</div>
-        <div class="meta">Senin, 26 Mei &middot; 09.00 WIB &middot; Ruang Paripurna DPRD</div>
+      <div class="section-title">Agenda Mendatang</div>
+      <a class="list-item bl-success" href="detail-undangan.html">
+        <div class="icon-box" style="background:var(--success-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><circle cx="8.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/></svg></div>
+        <div class="content">
+          <div class="title">Rapat Paripurna</div>
+          <div class="meta">Senin, 26 Mei &middot; 09.00 WIB &middot; Ruang Paripurna DPRD</div>
+        </div>
+        <span class="chev">&#8250;</span>
+      </a>
+      <a class="list-item bl-gold" href="detail-undangan.html">
+        <div class="icon-box" style="background:#fbf1dc;"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c1-3.6 3.6-5.5 5.5-5.5s4.5 1.9 5.5 5.5"/><path d="M14.5 15.2c1.9.2 3.7 2 4.5 4.8"/></svg></div>
+        <div class="content">
+          <div class="title">Kunjungan Kerja Dapil I</div>
+          <div class="meta">Selasa, 27 Mei &middot; 10.00 WIB &middot; Kec. Magelang Selatan</div>
+        </div>
+        <span class="chev">&#8250;</span>
+      </a>
+      <a class="list-item" href="detail-undangan.html">
+        <div class="icon-box"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c1-3.6 3.6-5.5 5.5-5.5s4.5 1.9 5.5 5.5"/><path d="M14.5 15.2c1.9.2 3.7 2 4.5 4.8"/></svg></div>
+        <div class="content">
+          <div class="title">Rapat Komisi II</div>
+          <div class="meta">Kamis, 29 Mei &middot; 13.00 WIB &middot; Ruang Rapat Komisi II</div>
+        </div>
+        <span class="chev">&#8250;</span>
+      </a>
+      <a class="list-item bl-info" href="reses-kunjungan.html">
+        <div class="icon-box" style="background:var(--info-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 11.5a7.5 7.5 0 0 1-11.4 6.4L4 19l1.2-4.3A7.5 7.5 0 1 1 21 11.5z"/></svg></div>
+        <div class="content">
+          <div class="title">Reses Masa Persidangan II</div>
+          <div class="meta">Jumat, 30 Mei &middot; 09.00 WIB &middot; Dapil II</div>
+        </div>
+        <span class="chev">&#8250;</span>
+      </a>
+    </div>
+
+    <div id="ag-rapat" data-panel-group="ag" style="display:none;">
+      <div class="section-title">Agenda Hari Ini &ndash; Sabtu, 24 Mei</div>
+      <a class="list-item bl-warn" href="detail-undangan.html">
+        <div class="icon-box" style="background:var(--warn-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c1-3.6 3.6-5.5 5.5-5.5s4.5 1.9 5.5 5.5"/><path d="M14.5 15.2c1.9.2 3.7 2 4.5 4.8"/></svg></div>
+        <div class="content">
+          <div class="title">Rapat Badan Anggaran</div>
+          <div class="meta"><span><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg> 10.00&ndash;12.00</span><span><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.3" r="2.4"/></svg> R. Rapat Banggar</span></div>
+          <div class="meta"><span><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 5-6 8-6s6.5 2 8 6"/></svg> 25 Peserta</span><span class="badge badge-gold">Dijadwalkan Admin</span></div>
+        </div>
+        <div class="side"><span class="badge badge-warn">Berlangsung</span></div>
+      </a>
+      <a class="list-item" href="detail-undangan.html">
+        <div class="icon-box"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c1-3.6 3.6-5.5 5.5-5.5s4.5 1.9 5.5 5.5"/><path d="M14.5 15.2c1.9.2 3.7 2 4.5 4.8"/></svg></div>
+        <div class="content">
+          <div class="title">Rapat Komisi I</div>
+          <div class="meta"><span><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg> 13.00&ndash;15.00</span><span><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.3" r="2.4"/></svg> R. Rapat Komisi I</span></div>
+        </div>
+        <div class="side"><span class="badge badge-info">Akan Datang</span></div>
+      </a>
+
+      <div class="section-title">Agenda Mendatang</div>
+      <a class="list-item bl-success" href="detail-undangan.html">
+        <div class="icon-box" style="background:var(--success-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><circle cx="8.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/></svg></div>
+        <div class="content">
+          <div class="title">Rapat Paripurna</div>
+          <div class="meta">Senin, 26 Mei &middot; 09.00 WIB &middot; Ruang Paripurna DPRD</div>
+        </div>
+        <span class="chev">&#8250;</span>
+      </a>
+      <a class="list-item" href="detail-undangan.html">
+        <div class="icon-box"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c1-3.6 3.6-5.5 5.5-5.5s4.5 1.9 5.5 5.5"/><path d="M14.5 15.2c1.9.2 3.7 2 4.5 4.8"/></svg></div>
+        <div class="content">
+          <div class="title">Rapat Komisi II</div>
+          <div class="meta">Kamis, 29 Mei &middot; 13.00 WIB &middot; Ruang Rapat Komisi II</div>
+        </div>
+        <span class="chev">&#8250;</span>
+      </a>
+    </div>
+
+    <div id="ag-kunjungan" data-panel-group="ag" style="display:none;">
+      <div class="section-title">Agenda Hari Ini &ndash; Sabtu, 24 Mei</div>
+      <a class="list-item bl-info" href="reses-kunjungan.html">
+        <div class="icon-box" style="background:var(--info-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="9" width="16" height="12" rx="1"/><path d="M9 21v-5h6v5"/><path d="M4 9l8-5 8 5"/></svg></div>
+        <div class="content">
+          <div class="title">Kunjungan Kerja Komisi III</div>
+          <div class="meta"><span><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg> 16.00&ndash;17.00</span><span><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.3" r="2.4"/></svg> Kec. Magelang Utara</span></div>
+        </div>
+        <div class="side"><span class="badge badge-info">Akan Datang</span></div>
+      </a>
+
+      <div class="section-title">Agenda Mendatang</div>
+      <a class="list-item bl-gold" href="detail-undangan.html">
+        <div class="icon-box" style="background:#fbf1dc;"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c1-3.6 3.6-5.5 5.5-5.5s4.5 1.9 5.5 5.5"/><path d="M14.5 15.2c1.9.2 3.7 2 4.5 4.8"/></svg></div>
+        <div class="content">
+          <div class="title">Kunjungan Kerja Dapil I</div>
+          <div class="meta">Selasa, 27 Mei &middot; 10.00 WIB &middot; Kec. Magelang Selatan</div>
+        </div>
+        <span class="chev">&#8250;</span>
+      </a>
+    </div>
+
+    <div id="ag-reses" data-panel-group="ag" style="display:none;">
+      <div class="section-title">Agenda Mendatang</div>
+      <a class="list-item bl-info" href="reses-kunjungan.html">
+        <div class="icon-box" style="background:var(--info-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 11.5a7.5 7.5 0 0 1-11.4 6.4L4 19l1.2-4.3A7.5 7.5 0 1 1 21 11.5z"/></svg></div>
+        <div class="content">
+          <div class="title">Reses Masa Persidangan II</div>
+          <div class="meta">Jumat, 30 Mei &middot; 09.00 WIB &middot; Dapil II</div>
+        </div>
+        <span class="chev">&#8250;</span>
+      </a>
+    </div>
+
+    <div id="ag-lainnya" data-panel-group="ag" style="display:none;">
+      <div class="empty">
+        <span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:32px;height:32px;"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/></svg></span>
+        Belum ada agenda pada kategori Lainnya.
       </div>
-      <span class="chev">&#8250;</span>
-    </a>
-    <a class="list-item bl-gold" href="detail-undangan.html">
-      <div class="icon-box" style="background:#fbf1dc;"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c1-3.6 3.6-5.5 5.5-5.5s4.5 1.9 5.5 5.5"/><path d="M14.5 15.2c1.9.2 3.7 2 4.5 4.8"/></svg></div>
-      <div class="content">
-        <div class="title">Kunjungan Kerja Dapil I</div>
-        <div class="meta">Selasa, 27 Mei &middot; 10.00 WIB &middot; Kec. Magelang Selatan</div>
-      </div>
-      <span class="chev">&#8250;</span>
-    </a>
-    <a class="list-item" href="detail-undangan.html">
-      <div class="icon-box"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c1-3.6 3.6-5.5 5.5-5.5s4.5 1.9 5.5 5.5"/><path d="M14.5 15.2c1.9.2 3.7 2 4.5 4.8"/></svg></div>
-      <div class="content">
-        <div class="title">Rapat Komisi II</div>
-        <div class="meta">Kamis, 29 Mei &middot; 13.00 WIB &middot; Ruang Rapat Komisi II</div>
-      </div>
-      <span class="chev">&#8250;</span>
-    </a>
-    <a class="list-item bl-info" href="reses-kunjungan.html">
-      <div class="icon-box" style="background:var(--info-bg);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 11.5a7.5 7.5 0 0 1-11.4 6.4L4 19l1.2-4.3A7.5 7.5 0 1 1 21 11.5z"/></svg></div>
-      <div class="content">
-        <div class="title">Reses Masa Persidangan II</div>
-        <div class="meta">Jumat, 30 Mei &middot; 09.00 WIB &middot; Dapil II</div>
-      </div>
-      <span class="chev">&#8250;</span>
-    </a>
+    </div>
 
   </div>
 <div class="bottomnav"><a class="navitem" href="beranda.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></span>Beranda</a><a class="navitem" href="notifikasi.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span>Notifikasi</a><a class="navitem" href="scan-qr.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="3" height="3" rx="0.6"/><rect x="18" y="14" width="3" height="3" rx="0.6"/><rect x="14" y="18" width="3" height="3" rx="0.6"/><rect x="18" y="18" width="3" height="3" rx="0.6"/></svg></span>Scan QR</a><a class="navitem active" href="agenda-kegiatan.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><circle cx="8.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="14.5" r="1.2" fill="currentColor" stroke="none"/></svg></span>Agenda</a><a class="navitem" href="profil.html"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 5-6 8-6s6.5 2 8 6"/></svg></span>Profil</a></div>

@@ -295,16 +295,9 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
 .filter-pill-btn{display:flex; align-items:center; gap:6px; background:#fff; border:1px solid var(--border); border-radius:9px; padding:8px 12px; font-size:11.5px; font-weight:700; color:var(--ink); font-family:inherit; cursor:pointer;}
 .filter-pill-btn .ic-svg{width:13px; height:13px; color:var(--muted);}
 
-.day-strip{display:flex; align-items:center; gap:5px; margin-bottom:16px;}
-.day-strip-scroll{display:flex; gap:5px; flex:1; overflow-x:auto;}
-.day-strip-item{flex-shrink:0; width:38px; text-align:center; padding:8px 0 9px; border-radius:11px; cursor:pointer;}
-.day-strip-item .d-lbl{font-size:9.5px; color:var(--muted); font-weight:700;}
-.day-strip-item .d-num{font-size:14px; font-weight:800; color:var(--ink); margin-top:3px;}
-.day-strip-item.active{background:var(--green); box-shadow:0 4px 10px rgba(15,35,24,.25);}
-.day-strip-item.active .d-lbl{color:rgba(255,255,255,.75);}
-.day-strip-item.active .d-num{color:#fff;}
-.day-strip-next{width:26px; height:26px; border-radius:50%; background:#fff; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--muted);}
-.day-strip-next .ic-svg{width:13px; height:13px;}
+.filter-wrap{position:relative; flex-shrink:0;}
+.filter-dropdown{display:none; position:absolute; top:calc(100% + 6px); right:0; background:#fff; border:1px solid var(--border); border-radius:12px; box-shadow:0 10px 24px rgba(0,0,0,.14); padding:14px; width:230px; z-index:30;}
+.filter-dropdown.open{display:block;}
 
 .agenda-banner{display:flex; align-items:center; gap:11px; background:var(--success-bg); border-radius:14px; padding:12px 14px; margin-bottom:16px;}
 .agenda-banner .ab-ic{width:36px; height:36px; border-radius:50%; background:#fff; display:flex; align-items:center; justify-content:center; color:var(--success); flex-shrink:0;}
@@ -381,20 +374,23 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
 
       <div class="month-row">
         <button type="button" class="month-btn"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/></svg> Mei 2025 <svg class="ic-svg chev-ic" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"/></svg></button>
-        <button type="button" class="filter-pill-btn"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 4h18l-7 8.5V19l-4 2v-8.5z"/></svg> Filter</button>
-      </div>
-
-      <div class="day-strip">
-        <div class="day-strip-scroll">
-          <div class="day-strip-item"><div class="d-lbl">Sen</div><div class="d-num">19</div></div>
-          <div class="day-strip-item"><div class="d-lbl">Sel</div><div class="d-num">20</div></div>
-          <div class="day-strip-item"><div class="d-lbl">Rab</div><div class="d-num">21</div></div>
-          <div class="day-strip-item"><div class="d-lbl">Kam</div><div class="d-num">22</div></div>
-          <div class="day-strip-item"><div class="d-lbl">Jum</div><div class="d-num">23</div></div>
-          <div class="day-strip-item active"><div class="d-lbl">Sab</div><div class="d-num">24</div></div>
-          <div class="day-strip-item"><div class="d-lbl">Min</div><div class="d-num">25</div></div>
+        <div class="filter-wrap">
+          <button type="button" class="filter-pill-btn" id="dateFilterBtn" onclick="toggleDateFilter(event)"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 4h18l-7 8.5V19l-4 2v-8.5z"/></svg> Filter</button>
+          <div class="filter-dropdown" id="dateFilterDropdown" onclick="event.stopPropagation();">
+            <div class="field" style="margin-bottom:10px;">
+              <label style="font-size:10.5px;">Dari Tanggal</label>
+              <input type="date" id="filterFrom">
+            </div>
+            <div class="field" style="margin-bottom:12px;">
+              <label style="font-size:10.5px;">Sampai Tanggal</label>
+              <input type="date" id="filterTo">
+            </div>
+            <div style="display:flex; gap:8px;">
+              <button type="button" class="btn btn-outline btn-sm" style="flex:1;" onclick="resetDateFilter()">Reset</button>
+              <button type="button" class="btn btn-primary btn-sm" style="flex:1;" onclick="applyDateFilter()">Terapkan</button>
+            </div>
+          </div>
         </div>
-        <div class="day-strip-next"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 6l6 6-6 6"/></svg></div>
       </div>
 
       <a class="agenda-banner" href="#agendaHariIni" style="text-decoration:none;">
@@ -407,7 +403,7 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
       </a>
 
       <div id="agendaHariIni"></div>
-      <div class="meeting-card mc-today">
+      <div class="meeting-card mc-today" data-date="2025-05-24">
         <div class="mc-header">
           <div class="mc-time">
             <div class="mc-time-ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg></div>
@@ -431,7 +427,7 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
         </div>
       </div>
 
-      <div class="meeting-card">
+      <div class="meeting-card" data-date="2025-05-24">
         <div class="mc-header">
           <div class="mc-time">
             <div class="mc-time-ic" style="background:var(--success-bg); color:var(--success);"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg></div>
@@ -454,6 +450,8 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
         </div>
       </div>
 
+      <div class="empty" id="mendatangEmpty" style="display:none;"><span class="ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:34px;height:34px;"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/></svg></span>Tidak ada rapat pada rentang tanggal ini.</div>
+
       <div class="section-title">Agenda Berikutnya</div>
       <a class="next-agenda-card" href="detail-undangan.html">
         <div class="na-ic"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/></svg></div>
@@ -468,7 +466,7 @@ h3.ctitle{font-size:14px; font-weight:800; margin:0 0 10px;}
         </div>
       </a>
 
-      <a class="btn btn-outline" href="#" style="margin-top:18px;" onclick="toast('Fitur tambah jadwal segera hadir'); return false;"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M12 14v4"/><path d="M10 16h4"/></svg> Tambah Jadwal Rapat</a>
+      <a class="btn btn-outline" href="jadwal-rapat-buat.html" style="margin-top:18px;"><svg class="ic-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M12 14v4"/><path d="M10 16h4"/></svg> Tambah Jadwal Rapat</a>
 
     </div>
 
@@ -623,6 +621,44 @@ function toast(msg){
   el.textContent = msg;
   el.style.display = 'block';
   setTimeout(function(){ el.style.display = 'none'; }, 2200);
+}
+
+function toggleDateFilter(e){
+  e.preventDefault();
+  e.stopPropagation();
+  var dd = document.getElementById('dateFilterDropdown');
+  if(dd){ dd.classList.toggle('open'); }
+}
+document.addEventListener('click', function(){
+  var dd = document.getElementById('dateFilterDropdown');
+  if(dd){ dd.classList.remove('open'); }
+});
+function applyDateFilter(){
+  var from = document.getElementById('filterFrom').value;
+  var to = document.getElementById('filterTo').value;
+  var cards = document.querySelectorAll('#jr-mendatang .meeting-card[data-date]');
+  var visibleCount = 0;
+  cards.forEach(function(card){
+    var d = card.dataset.date;
+    var inRange = (!from || d >= from) && (!to || d <= to);
+    card.style.display = inRange ? '' : 'none';
+    if(inRange){ visibleCount++; }
+  });
+  var emptyEl = document.getElementById('mendatangEmpty');
+  if(emptyEl){ emptyEl.style.display = visibleCount === 0 ? 'block' : 'none'; }
+  var dd = document.getElementById('dateFilterDropdown');
+  if(dd){ dd.classList.remove('open'); }
+  toast(visibleCount + ' rapat ditemukan pada rentang tanggal tersebut');
+}
+function resetDateFilter(){
+  document.getElementById('filterFrom').value = '';
+  document.getElementById('filterTo').value = '';
+  document.querySelectorAll('#jr-mendatang .meeting-card[data-date]').forEach(function(card){ card.style.display = ''; });
+  var emptyEl = document.getElementById('mendatangEmpty');
+  if(emptyEl){ emptyEl.style.display = 'none'; }
+  var dd = document.getElementById('dateFilterDropdown');
+  if(dd){ dd.classList.remove('open'); }
+  toast('Filter tanggal direset');
 }
 
 
